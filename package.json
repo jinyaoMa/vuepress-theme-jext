@@ -1,0 +1,38 @@
+{
+  "name": "@jinyaoma/vuepress-theme-jext",
+  "version": "0.0.1-20201219.1417",
+  "description": "Documentation-blog Theme Combo for VuePress 1.x",
+  "keywords": [
+    "vuepress",
+    "vuepress-theme",
+    "jext"
+  ],
+  "author": {
+    "name": "jinyaoMa",
+    "email": "jinyao.ma@outlook.com",
+    "url": "https://github.com/jinyaoMa"
+  },
+  "license": "MIT",
+  "repository": "git@github.com:jinyaoMa/vuepress-theme-jext.git",
+  "main": "$theme/index.js",
+  "scripts": {
+    "vuepress:dev": "node $iconfont/generate.js && vuepress dev $_docs",
+    "vuepress:build": "node $iconfont/generate.js && vuepress build $_docs",
+    "vuepress:deploy": "deploy.sh",
+    "build:component": "vue-cli-service build --target lib --name jext --dest lib/component $component/index.js",
+    "build:iconfont": "node $iconfont/generate.js && vue-cli-service build --target lib --name j-icon --dest lib/iconfont $iconfont/index.js",
+    "usenpm": "npmuser.sh npm",
+    "usegithub": "npmuser.sh github",
+    "publish": "npm publish --access=public"
+  },
+  "dependencies": {
+    "@vuepress/plugin-blog": "^1.9.2",
+    "vuepress": "^1.7.1",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "~4.5.0",
+    "font-carrier": "^0.2.0",
+    "mini-css-extract-plugin": "^1.2.1"
+  }
+}
