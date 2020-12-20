@@ -16,11 +16,11 @@
   "repository": "git@github.com:jinyaoMa/vuepress-theme-jext.git",
   "main": "$theme/index.js",
   "scripts": {
-    "vuepress:dev": "node $iconfont/generate.js && vuepress dev $_docs",
-    "vuepress:build": "node $iconfont/generate.js && vuepress build $_docs",
+    "vuepress:dev": "node $icons/generate.js && vuepress dev $_docs",
+    "vuepress:build": "node $icons/generate.js && vuepress build $_docs",
     "vuepress:deploy": "deploy.sh",
-    "build:component": "vue-cli-service build --target lib --name jext --dest lib/component $component/index.js",
-    "build:iconfont": "node $iconfont/generate.js && vue-cli-service build --target lib --name j-icon --dest lib/iconfont $iconfont/index.js",
+    "build:components": "vue-cli-service build --target lib --name jext --dest lib/components $components/index.js",
+    "build:icons": "node $icons/generate.js && vue-cli-service build --target lib --name j-icon --dest lib/icons $icons/index.js",
     "usenpm": "npmuser.sh npm",
     "usegithub": "npmuser.sh github",
     "publish": "npm publish --access=public"

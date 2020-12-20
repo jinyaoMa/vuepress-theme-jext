@@ -1,7 +1,5 @@
 <template>
-  <div class="j-layout">
-    <slot></slot>
-  </div>
+  <div class="j-layout"></div>
 </template>
 
 <script>

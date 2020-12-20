@@ -1,10 +1,8 @@
-const components = {};
-const path = require("path");
-const vueFiles = require.context(path.join(__dirname, "./"), true, /\.vue$/);
-vueFiles.keys().forEach((key) => {
-  const name = path.basename(key, ".vue");
-  components[name] = vueFiles(key).default || vueFiles(key);
-});
+import layout from "./layout";
+
+const components = {
+  layout
+};
 
 const install = function(Vue) {
   if (install.installed) return;
