@@ -9,5 +9,10 @@ module.exports = {
 
   description: "",
 
-  themeConfig: {}
+  themeConfig: {
+    title: {
+      zh: `耀 の <strong>私人空间</strong>`,
+      en: `Jinyao's <strong>SPACE</strong>`
+    }
+  }
 };

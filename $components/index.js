@@ -1,7 +1,11 @@
+import "./index.styl";
+import "@fortawesome/fontawesome-free/css/all.css";
 import layout from "./layout";
+import audio from "./audio";
 
 const components = {
-  layout
+  layout,
+  audio
 };
 
 const install = function(Vue) {
