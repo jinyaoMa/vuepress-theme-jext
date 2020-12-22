@@ -13,5 +13,21 @@
 .flex-horizontal
   flex-flow row
 
+.flex-vertical-reverse
+  flex-flow column-reverse
+
+.flex-horizontal-reverse
+  flex-flow row-reverse
+
 .flex-fill
   flex-grow 1
+
+.flex-nowrap
+  flex-wrap nowrap
+
+/* Vue Transition */
+.fade-enter-active, .fade-leave-active
+  transition opacity 0.2s
+
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+  opacity 0

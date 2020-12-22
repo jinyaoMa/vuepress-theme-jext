@@ -13,12 +13,18 @@
     >
       <template v-slot:header>
         <div class="header flex flex-horizontal">
-          <div></div>
           <div class="title" v-html="$themeConfig.title[j$Lang]"></div>
           <div class="flex flex-horizontal">
-            <j-audio></j-audio>
+            <j-audio
+              class="audio"
+              v-if="playlist.length"
+              :playlist="playlist"
+            ></j-audio>
           </div>
         </div>
+      </template>
+      <template v-slot:footer>
+        <div class="footer flex flex-horizontal"></div>
       </template>
     </j-layout>
     <component :is="layout" />
@@ -26,6 +32,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "GlobalLayout",
   computed: {
@@ -44,10 +52,23 @@ export default {
       return "NotFound";
     },
   },
+  methods: {
+    setupPlaylist() {
+      if (this.$themeConfig.playlistApi) {
+        axios.get(this.$themeConfig.playlistApi).then((res) => {
+          this.playlist = res.data;
+        });
+      }
+    },
+  },
   data() {
     return {
       layoutColumn: 3,
+      playlist: [],
     };
+  },
+  mounted() {
+    this.setupPlaylist();
   },
 };
 </script>
@@ -56,7 +77,7 @@ export default {
 .GlobalLayout
   letter-spacing 0.1em
 
-.header
+.header, .footer
   height 100%
   justify-content space-between
 
@@ -64,7 +85,7 @@ export default {
   font-size 22px
   font-weight bold
   line-height 80px
-  padding 0 40px
+  padding-bottom 0.2em
   >>> strong
     display inline-block
     line-height 22px
@@ -81,4 +102,7 @@ export default {
       background-color #ff3300
       border-radius 10px
       z-index -1
+
+.audio
+  padding 10px 0
 </style>

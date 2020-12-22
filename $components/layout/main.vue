@@ -131,6 +131,8 @@
             :style="{
               backgroundColor: footer.backgroundColor || '#ffffff',
               backgroundImage: footer.backgroundImage || '',
+              borderRadius: footer.round && '4px 4px 0 0',
+              padding: footer.round && '0 4px',
               paddingBottom: scrollControl.size || '14px',
             }"
           >
@@ -283,6 +285,7 @@ export default {
         return {
           backgroundColor: "#ffffff",
           backgroundImage: "",
+          round: true,
         };
       },
     },
