@@ -1,5 +1,10 @@
-export default {
+module.exports = {
   // placeholder [::]
+
+  home: "Home",
+  archive: "Archive",
+  category: "Category",
+  tag: "Tag",
 
   footer: {
     powered: "Powered by [:vuepress:]",
@@ -10,10 +15,6 @@ export default {
     license:
       "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License"
   },
-
-  archive: "Archive",
-  category: "Category",
-  tag: "Tag",
 
   yearTotal: "have [:total:] posts written this year"
 };

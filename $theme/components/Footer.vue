@@ -1,12 +1,85 @@
 <template>
-  <div class="Footer flex flex-horizontal">
-    <div class="info flex flex-vertical"></div>
+  <div
+    class="Footer flex flex-horizontal"
+    :style="{
+      padding: gap,
+    }"
+  >
+    <div class="info flex flex-vertical">
+      <div v-html="$themeConfig.copyright"></div>
+      <div v-html="powered"></div>
+      <div v-html="themed"></div>
+      <div class="flex flex-horizontal flex-wrap">
+        <div class="count" :title="j$Locale.footer.pv">
+          <i class="fas fa-eye" />
+          {{ j$Busuanzi.pv }}
+        </div>
+        <div class="count" :title="j$Locale.footer.uv">
+          <i class="fas fa-user-tie" />
+          {{ j$Busuanzi.uv }}
+        </div>
+        <div class="count" :title="j$Locale.footer.wd">
+          <i class="fas fa-file-word" />
+          {{ j$SiteTotalWords }}
+        </div>
+      </div>
+      <div class="license flex" v-html="license"></div>
+    </div>
   </div>
 </template>
 
 <script>
+import BY_NC_SA from "../statics/by-nc-sa.svg";
+
 export default {
   name: "Footer",
+  props: {
+    gap: {
+      type: String,
+      default() {
+        return "40px";
+      },
+    },
+  },
+  computed: {
+    powered() {
+      let result = this.j$Locale.footer.powered.replace(
+        "[:vuepress:]",
+        `<a target="_blank" href="${VUEPRESS_OFFICIAL_SITE}" title="VuePress">VuePress</a>`
+      );
+      if (typeof __VUEPRESS__ !== "undefined") {
+        result = this.j$Locale.footer.powered.replace(
+          "[:vuepress:]",
+          `<a target="_blank" href="${VUEPRESS_OFFICIAL_SITE}" title="VuePress v${
+            __VUEPRESS__ ? __VUEPRESS__.version : "?"
+          }">VuePress</a>`
+        );
+      }
+      return result;
+    },
+    themed() {
+      return this.j$Locale.footer.themed
+        .replace(
+          "[:theme:]",
+          `<a target="_blank" href="${THEME_REPO_URL}" title="${THEME_NAME}">${THEME_SHORTNAME}</a>`
+        )
+        .replace(
+          "[:author:]",
+          `<a target="_blank" href="${THEME_AUTHOR_LINK}" title="${THEME_AUTHOR}">${THEME_AUTHOR}</a>`
+        );
+    },
+    license() {
+      return `<a target="_blank" href="${CC_LICENSE_LINK}" title="${this.j$Locale.footer.license}"><img src="${BY_NC_SA}"></a>`;
+    },
+  },
+  watch: {
+    $route() {
+      this.j$InitBusuanzi();
+    },
+  },
+  mounted() {
+    this.j$InitBusuanzi();
+  },
 };
 </script>
 
@@ -14,4 +87,22 @@ export default {
 .Footer
   height 100%
   justify-content space-between
+
+.info
+  > div
+    margin 4px 0
+  > div:last-child
+    margin 4px 0 0
+
+.count
+  margin-right 1em
+
+.license
+  >>> a
+    line-height 1
+    margin-top 0.25em
+    &:before
+      display none
+    > img
+      max-height 2em
 </style>

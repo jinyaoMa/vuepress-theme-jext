@@ -1,5 +1,5 @@
-import zhCN from "@theme/locales/zh-CN";
-import enUS from "@theme/locales/en-US";
+import zhCN from "../locales/zh-CN";
+import enUS from "../locales/en-US";
 
 const ZH = "zh";
 const EN = "en";

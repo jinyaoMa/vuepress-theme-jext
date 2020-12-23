@@ -30,6 +30,7 @@ export default {
   },
   computed: {
     layout() {
+      console.log(this);
       if (this.$page.path) {
         const _layout = this.$frontmatter.layout;
         if (
@@ -51,8 +52,3 @@ export default {
   },
 };
 </script>
-
-<style lang="stylus" scoped>
-.GlobalLayout
-  letter-spacing 0.1em
-</style>

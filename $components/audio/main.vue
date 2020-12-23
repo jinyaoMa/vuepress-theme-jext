@@ -64,7 +64,7 @@
         }"
       >
         <div
-          class="j-audio-list-item flex flex-horizontal flex-nowrap"
+          class="j-audio-list-item flex flex-horizontal"
           v-for="(song, i) in playlist"
           :key="i"
           :style="{
@@ -206,17 +206,29 @@ export default {
         };
         this.audio.onerror = (e) => {
           if (this.audio && !this.audio.paused) {
+            this.$emit("error", {
+              index: this.currentIndex,
+              ...this.playlist[this.currentIndex],
+            });
             window.setTimeout(this.audio.onended, 1000);
           }
         };
         this.audio.onplay = (e) => {
           if (this.audio && !this.audio.paused) {
             this.isPlayed = true;
+            this.$emit("play", {
+              index: this.currentIndex,
+              ...this.playlist[this.currentIndex],
+            });
           }
         };
         this.audio.onpause = (e) => {
           if (this.audio && this.audio.paused) {
             this.isPlayed = false;
+            this.$emit("pause", {
+              index: this.currentIndex,
+              ...this.playlist[this.currentIndex],
+            });
           }
         };
       }
@@ -225,6 +237,10 @@ export default {
       if (!this.audio) return;
       this.audio.src = this.playlist[this.currentIndex].url || "";
       this.cover = this.playlist[this.currentIndex].pic || "";
+      this.$emit("change", {
+        index: this.currentIndex,
+        ...this.playlist[this.currentIndex],
+      });
     },
     audioNext() {
       this.currentIndex += 1;

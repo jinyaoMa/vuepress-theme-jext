@@ -95,11 +95,23 @@ export default (Vuex) => {
       },
       j$SitePosts() {
         return this.$site.pages
-          .filter((p) => p.id === "archive")
+          .filter((p) => p.id === "post")
           .sort((a, b) => {
             if (a.frontmatter.date < b.frontmatter.date) {
               return 1;
             } else if (a.frontmatter.date > b.frontmatter.date) {
+              return -1;
+            }
+            return 0;
+          });
+      },
+      j$SitePostsNewest() {
+        return this.$site.pages
+          .filter((p) => p.id === "post")
+          .sort((a, b) => {
+            if (a.frontmatter.updated < b.frontmatter.updated) {
+              return 1;
+            } else if (a.frontmatter.updated > b.frontmatter.updated) {
               return -1;
             }
             return 0;
