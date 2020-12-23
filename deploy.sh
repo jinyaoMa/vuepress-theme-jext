@@ -4,6 +4,7 @@
 set -e
 
 # build
+#npm run icons:dev
 #npm run vuepress:build
 
 # navigate into the build output directory

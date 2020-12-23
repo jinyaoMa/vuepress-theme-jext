@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   // placeholder [::]
 
   footer: {
@@ -12,6 +12,8 @@ module.exports = {
   },
 
   archive: "Archive",
+  category: "Category",
+  tag: "Tag",
 
   yearTotal: "have [:total:] posts written this year"
 };

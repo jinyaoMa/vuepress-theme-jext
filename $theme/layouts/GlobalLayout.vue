@@ -11,64 +11,43 @@
         color: '#333',
       }"
     >
-      <template v-slot:header>
-        <div class="header flex flex-horizontal">
-          <div class="title" v-html="$themeConfig.title[j$Lang]"></div>
-          <div class="flex flex-horizontal">
-            <j-audio
-              class="audio"
-              v-if="playlist.length"
-              :playlist="playlist"
-            ></j-audio>
-          </div>
-        </div>
-      </template>
-      <template v-slot:footer>
-        <div class="footer flex flex-horizontal"></div>
-      </template>
+      <Header slot="header"></Header>
+      <Footer slot="footer"></Footer>
     </j-layout>
     <component :is="layout" />
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default {
   name: "GlobalLayout",
+  components: {
+    Header,
+    Footer,
+  },
   computed: {
     layout() {
       if (this.$page.path) {
-        const layout = this.$frontmatter.layout;
+        const _layout = this.$frontmatter.layout;
         if (
-          layout &&
-          (this.$vuepress.getLayoutAsyncComponent(layout) ||
-            this.$vuepress.getVueComponent(layout))
+          _layout &&
+          (this.$vuepress.getLayoutAsyncComponent(_layout) ||
+            this.$vuepress.getVueComponent(_layout))
         ) {
-          return layout;
+          return _layout;
         }
         return "Layout";
       }
       return "NotFound";
     },
   },
-  methods: {
-    setupPlaylist() {
-      if (this.$themeConfig.playlistApi) {
-        axios.get(this.$themeConfig.playlistApi).then((res) => {
-          this.playlist = res.data;
-        });
-      }
-    },
-  },
   data() {
     return {
       layoutColumn: 3,
-      playlist: [],
     };
-  },
-  mounted() {
-    this.setupPlaylist();
   },
 };
 </script>
@@ -76,33 +55,4 @@ export default {
 <style lang="stylus" scoped>
 .GlobalLayout
   letter-spacing 0.1em
-
-.header, .footer
-  height 100%
-  justify-content space-between
-
-.title
-  font-size 22px
-  font-weight bold
-  line-height 80px
-  padding-bottom 0.2em
-  >>> strong
-    display inline-block
-    line-height 22px
-    margin 10px
-    position relative
-    color #ffffff
-    &:before
-      content ''
-      position absolute
-      top -10px
-      left -10px
-      height calc(100% + 20px)
-      width calc(100% + 20px)
-      background-color #ff3300
-      border-radius 10px
-      z-index -1
-
-.audio
-  padding 10px 0
 </style>

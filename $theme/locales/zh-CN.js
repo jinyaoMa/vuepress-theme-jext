@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   // placeholder [::]
 
   footer: {
@@ -11,6 +11,8 @@ module.exports = {
   },
 
   archive: "归档",
+  category: "分类",
+  tag: "标签",
 
   yearTotal: "共写有 [:total:] 篇文章"
 };
