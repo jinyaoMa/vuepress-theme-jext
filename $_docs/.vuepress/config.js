@@ -16,6 +16,40 @@ module.exports = {
     },
     playlistApi: `https://api.i-meto.com/meting/api?server=netease&type=playlist&id=4989572738&r=${Math.random()}`,
     copyright: `© 2019 - ${new Date().getFullYear()} jinyaoMa`,
-    qrcodes: []
-  }
+    qrcodes: [
+      {
+        text: {
+          zh: "QQ群",
+          en: "QQ Group"
+        },
+        image: "/assets/img/qq.group.png"
+      },
+      {
+        text: {
+          zh: "QQ",
+          en: "QQ"
+        },
+        image: "/assets/img/qq.png"
+      },
+      {
+        text: {
+          zh: "微信",
+          en: "WeChat"
+        },
+        image: "/assets/img/wechat.png"
+      }
+    ],
+    navMenu: [
+      {
+        text: {
+          zh: "博客",
+          en: "Blog"
+        },
+        icon: "fas fa-blog",
+        to: "/"
+      }
+    ]
+  },
+
+  evergreen: true // using old browser ?
 };

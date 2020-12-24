@@ -13,6 +13,7 @@
     >
       <Header slot="header"></Header>
       <Footer slot="footer"></Footer>
+      <Drawer slot="drawer"></Drawer>
     </j-layout>
     <component :is="layout" />
   </div>
@@ -21,12 +22,14 @@
 <script>
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Drawer from "../components/Drawer";
 
 export default {
   name: "GlobalLayout",
   components: {
     Header,
     Footer,
+    Drawer,
   },
   computed: {
     layout() {

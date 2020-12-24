@@ -1,11 +1,17 @@
 import "./index.styl";
 import "@fortawesome/fontawesome-free/css/all.css";
-import layout from "./layout";
-import audio from "./audio";
+import Layout from "./Layout";
+import Audio from "./Audio";
+import Link from "./Link";
+import Menu from "./Menu";
+import Container from "./Container";
 
 const components = {
-  layout,
-  audio
+  Layout,
+  Audio,
+  Link,
+  Menu,
+  Container
 };
 
 const install = function(Vue) {

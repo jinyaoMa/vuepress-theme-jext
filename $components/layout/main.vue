@@ -430,87 +430,77 @@ export default {
 .j-layout
   position relative
   overflow hidden
-
-.j-layout-inner
-  width 100%
-  position relative
-  &:hover
-    .j-layout-scrollbar-thumb
-      opacity 0.6
-    .j-layout-goingto-button
-      opacity 0.6
-
-.j-layout-goingto
-  position absolute
-  bottom 0
-  width auto
-  pointer-events none
-  &.j-layout-noScroll
+  .j-layout-inner
+    width 100%
+    position relative
+    &:hover
+      .j-layout-scrollbar-thumb
+        opacity 0.6
+      .j-layout-goingto-button
+        opacity 0.6
+  .j-layout-goingto
+    position absolute
+    bottom 0
+    width auto
+    pointer-events none
+    &.j-layout-noScroll
+      opacity 0
+      .j-layout-goingto-button
+        pointer-events none
+  .j-layout-goingto-button
+    text-align center
+    cursor pointer
+    pointer-events auto
+    transition opacity 0.2s
     opacity 0
-    .j-layout-goingto-button
-      pointer-events none
-
-.j-layout-goingto-button
-  text-align center
-  cursor pointer
-  pointer-events auto
-  transition opacity 0.2s
-  opacity 0
-  &:hover
-    opacity 1 !important
-  &:first-child
-    border-radius 4px 0 0 0
-  &:last-child
-    border-radius 0 4px 0 0
-  i
-    display block
-    margin-left 0.1em
-
-.j-layout-scrollbar
-  position absolute
-  z-index 1
-  pointer-events none
-  user-select none
-  transition opacity 0.2s
-  &.j-layout-noScroll
-    opacity 0 !important
-
-.j-layout-scrollbar-thumb
-  position relative
-  pointer-events auto
-  user-select none
-  cursor pointer
-  transition opacity 0.2s
-  opacity 0
-  &:hover
-    opacity 1 !important
-
-.j-layout-scrollbar-thumb--show
-  opacity 1
-
-.j-layout-header
-  position absolute
-  width 100%
-  z-index 1
-  box-shadow 0 -2px 4px
-  box-sizing border-box
-
-.j-layout-frame
-  height 100%
-  overflow-x hidden
-  overflow-y scroll
-  // Hide scrollbar for IE, Edge and Firefox
-  -ms-overflow-style none // IE and Edge
-  scrollbar-width none // Firefox
-  // Hide scrollbar for Chrome, Safari and Opera
-  &::-webkit-scrollbar
-    display none
-
-.j-layout-drawer, .j-layout-drawer-inner, .j-layout-main, .j-layout-aside, .j-layout-aside-inner, .j-layout-footer
-  box-sizing border-box
-
-.j-layout-drawer-inner, .j-layout-aside-inner
-  position sticky
-  top 0
-  overflow hidden
+    &:hover
+      opacity 1 !important
+    &:first-child
+      border-radius 4px 0 0 0
+    &:last-child
+      border-radius 0 4px 0 0
+    i
+      display block
+      margin-left 0.1em
+  .j-layout-scrollbar
+    position absolute
+    z-index 1
+    pointer-events none
+    user-select none
+    transition opacity 0.2s
+    &.j-layout-noScroll
+      opacity 0 !important
+  .j-layout-scrollbar-thumb
+    position relative
+    pointer-events auto
+    user-select none
+    cursor pointer
+    transition opacity 0.2s
+    opacity 0
+    &:hover
+      opacity 1 !important
+  .j-layout-scrollbar-thumb--show
+    opacity 1
+  .j-layout-header
+    position absolute
+    width 100%
+    z-index 1
+    box-shadow 0 -2px 4px
+    box-sizing border-box
+  .j-layout-frame
+    height 100%
+    overflow-x hidden
+    overflow-y scroll
+    // Hide scrollbar for IE, Edge and Firefox
+    -ms-overflow-style none // IE and Edge
+    scrollbar-width none // Firefox
+    // Hide scrollbar for Chrome, Safari and Opera
+    &::-webkit-scrollbar
+      display none
+  .j-layout-drawer, .j-layout-drawer-inner, .j-layout-main, .j-layout-aside, .j-layout-aside-inner, .j-layout-footer
+    box-sizing border-box
+  .j-layout-drawer-inner, .j-layout-aside-inner
+    position sticky
+    top 0
+    overflow hidden
 </style>

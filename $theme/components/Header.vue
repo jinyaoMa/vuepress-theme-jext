@@ -2,6 +2,11 @@
   <div class="Header flex flex-horizontal">
     <div class="title" v-html="$themeConfig.title[j$Lang]"></div>
     <div class="flex flex-horizontal">
+      <j-menu
+        v-if="$themeConfig.navMenu"
+        :links="$themeConfig.navMenu"
+        :lang-key="j$Lang"
+      ></j-menu>
       <j-audio
         class="audio"
         v-if="playlist.length"
@@ -42,7 +47,7 @@ export default {
   justify-content space-between
 
 .title
-  font-size 22px
+  font-size 24px
   font-weight bold
   line-height 80px
   padding-bottom 0.2em

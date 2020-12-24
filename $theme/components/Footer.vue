@@ -1,11 +1,16 @@
 <template>
   <div
-    class="Footer flex flex-horizontal"
+    class="Footer flex flex-horizontal flex-wrap"
     :style="{
       padding: gap,
     }"
   >
-    <div class="info flex flex-vertical">
+    <div
+      class="info flex flex-vertical flex-fill"
+      :style="{
+        paddingRight: gap,
+      }"
+    >
       <div v-html="$themeConfig.copyright"></div>
       <div v-html="powered"></div>
       <div v-html="themed"></div>
@@ -24,6 +29,16 @@
         </div>
       </div>
       <div class="license flex" v-html="license"></div>
+    </div>
+    <div class="flex flex-horizontal flex-wrap">
+      <div
+        class="qrcode flex flex-vertical"
+        v-for="(qrcode, i) in $themeConfig.qrcodes || []"
+        :key="i"
+      >
+        <div v-html="qrcode.text[j$Lang]"></div>
+        <img :src="qrcode.image" />
+      </div>
     </div>
   </div>
 </template>
@@ -86,13 +101,12 @@ export default {
 <style lang="stylus" scoped>
 .Footer
   height 100%
-  justify-content space-between
 
 .info
   > div
-    margin 4px 0
+    margin 8px 0
   > div:last-child
-    margin 4px 0 0
+    margin 8px 0 0
 
 .count
   margin-right 1em
@@ -105,4 +119,12 @@ export default {
       display none
     > img
       max-height 2em
+
+.qrcode
+  margin-top 8px
+  > div
+    margin 8px 8px 0 0
+  > img
+    max-height 150px
+    margin 8px 8px 0 0
 </style>

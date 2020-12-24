@@ -301,70 +301,63 @@ export default {
 <style lang="stylus">
 .j-audio
   position relative
-
-.j-audio-left
-  box-sizing border-box
-
-.j-audio-button
-  display inline-block
-  cursor pointer
-  user-select none
-  transition background-color 0.2s
-  &:hover
+  .j-audio-left
+    box-sizing border-box
+  .j-audio-button
+    display inline-block
+    cursor pointer
+    user-select none
+    transition background-color 0.2s
+    &:hover
+      background-color #eeeeee
+  .j-audio-right
+    text-align center
+    overflow hidden
+    cursor pointer
+    position relative
+    box-shadow 0 0 1px
+  .j-audio-cover
+    width 100%
+    height @width
+    background-position center center
+    background-repeat no-repeat
+    background-size cover
     background-color #eeeeee
-
-.j-audio-right
-  text-align center
-  overflow hidden
-  cursor pointer
-  position relative
-  box-shadow 0 0 1px
-
-.j-audio-cover
-  width 100%
-  height @width
-  background-position center center
-  background-repeat no-repeat
-  background-size cover
-  background-color #eeeeee
-  position absolute
-
-.j-audio-icon
-  position relative
-  text-shadow -1px 1px #ffffff
-
-.j-audio-list
-  position absolute
-  overflow-x hidden
-  overflow-y auto
-  background-color #ffffff
-  box-shadow 0 0 1px
-  &::-webkit-scrollbar
-    width 6px
-    height 0
-  &::-webkit-scrollbar-thumb
-    border-radius 4px
-    background-color #333333
-
-.j-audio-list-item
-  padding 8px 0
-  white-space nowrap
-  border-bottom 1px solid #eeeeee
-  cursor pointer
-  > span
-    &:nth-child(1)
-      padding 0 0.5em
-    &:nth-child(2)
-      min-width min-content
-    &:nth-child(3)
-      padding-left 0.5em
-      opacity 0.8
-      overflow-x hidden
-      text-overflow ellipsis
-      &:before
-        content '- '
-  &:hover
-    background-color #f1f2f3
-  &.j-audio-highlight
-    background-color #e1e2e3
+    position absolute
+  .j-audio-icon
+    position relative
+    text-shadow -1px 1px #ffffff
+  .j-audio-list
+    position absolute
+    overflow-x hidden
+    overflow-y auto
+    background-color #ffffff
+    box-shadow 0 0 1px
+    &::-webkit-scrollbar
+      width 6px
+      height 0
+    &::-webkit-scrollbar-thumb
+      border-radius 4px
+      background-color #333333
+  .j-audio-list-item
+    padding 8px 0
+    white-space nowrap
+    border-bottom 1px solid #eeeeee
+    cursor pointer
+    > span
+      &:nth-child(1)
+        padding 0 0.5em
+      &:nth-child(2)
+        min-width min-content
+      &:nth-child(3)
+        padding-left 0.5em
+        opacity 0.8
+        overflow-x hidden
+        text-overflow ellipsis
+        &:before
+          content '- '
+    &:hover
+      background-color #f1f2f3
+    &.j-audio-highlight
+      background-color #e1e2e3
 </style>
