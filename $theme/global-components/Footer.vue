@@ -101,6 +101,7 @@ export default {
 <style lang="stylus" scoped>
 .Footer
   height 100%
+  user-select none
 
 .info
   > div

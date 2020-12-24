@@ -51,6 +51,7 @@ export default {
   font-weight bold
   line-height 80px
   padding-bottom 0.2em
+  user-select none
   >>> strong
     display inline-block
     line-height 22px

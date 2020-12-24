@@ -16,7 +16,9 @@
         lineHeight: direction === 'horizontal' && size,
       }"
       :class="{
-        'is-active': $route.path === link.to,
+        'is-active': exact
+          ? $route.path === link.to
+          : $route.path.startsWith(link.to),
       }"
       @click="$router.push(link.to)"
     >
@@ -74,6 +76,12 @@ export default {
             to: "/",
           },
         ];
+      },
+    },
+    exact: {
+      type: Boolean,
+      default() {
+        return true;
       },
     },
     barColor: {
