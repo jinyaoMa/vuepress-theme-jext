@@ -9,7 +9,18 @@ module.exports = (themeConfig, _) => {
       archive: "/posts/",
       category: "/categories/",
       tag: "/tags/"
-    }
+    },
+    blogMenu: [
+      {
+        text: {
+          zh: zhCN.archive,
+          en: enUS.archive
+        },
+        icon: "fas fa-archive fa-fw",
+        to: "/posts/"
+      },
+      ...(themeConfig.blogMenu instanceof Array ? themeConfig.blogMenu : [])
+    ]
   };
 
   const plugins = [
@@ -98,6 +109,18 @@ module.exports = (themeConfig, _) => {
     // change _posts link
     if (typeof regularPath === "string" && regularPath.startsWith("/_posts/")) {
       frontmatter.permalink = `/posts/${key.substr(2)}/`;
+
+      // extract posts as blog page
+      if (frontmatter.extract === true) {
+        themeConfig._j$Blog.blogMenu.push({
+          text: {
+            zh: frontmatter.title_zh || "",
+            en: frontmatter.title_en || ""
+          },
+          icon: frontmatter.icon || false,
+          to: frontmatter.permalink
+        });
+      }
     }
 
     // pangu

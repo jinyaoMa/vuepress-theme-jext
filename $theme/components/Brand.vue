@@ -1,5 +1,5 @@
 <template>
-  <j-container hideTitle>
+  <j-container hide-title>
     <div class="Brand flex flex-vertical">
       <div
         class="avatar"
@@ -114,6 +114,7 @@ export default {
 
 .count
   margin-top 20px
+  user-select none
   > div
     cursor pointer
     &:nth-child(2)
@@ -129,6 +130,7 @@ export default {
 
 .links
   margin-top 20px
+  font-size 1.1em
   .links-button
     color inherit
     width 2em

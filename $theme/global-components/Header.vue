@@ -2,11 +2,7 @@
   <div class="Header flex flex-horizontal">
     <div class="title" v-html="$themeConfig.title[j$Lang]"></div>
     <div class="flex flex-horizontal">
-      <j-menu
-        v-if="$themeConfig.navMenu"
-        :links="$themeConfig.navMenu"
-        :lang-key="j$Lang"
-      ></j-menu>
+      <j-menu v-if="navMenu" :links="navMenu" :lang-key="j$Lang"></j-menu>
       <j-audio
         class="audio"
         v-if="playlist.length"
@@ -28,6 +24,20 @@ export default {
           this.playlist = res.data;
         });
       }
+    },
+  },
+  computed: {
+    navMenu() {
+      if (
+        this.$themeConfig.navMenu instanceof Array &&
+        this.$themeConfig.navMenu.length > 0
+      ) {
+        return this.$themeConfig.navMenu.map((link) => {
+          link.to = this.$withBase(link.to);
+          return link;
+        });
+      }
+      return false;
     },
   },
   data() {

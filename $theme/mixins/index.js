@@ -102,9 +102,14 @@ export default (Vuex) => {
       j$SiteTotalTags() {
         return this.$tag.length;
       },
+      j$SiteExtractPosts() {
+        return this.$site.pages.filter(
+          (p) => p.id === "post" && p.frontmatter.extract
+        );
+      },
       j$SitePosts() {
         return this.$site.pages
-          .filter((p) => p.id === "post")
+          .filter((p) => p.id === "post" && !p.frontmatter.extract)
           .sort((a, b) => {
             if (a.frontmatter.date < b.frontmatter.date) {
               return 1;
@@ -116,7 +121,7 @@ export default (Vuex) => {
       },
       j$SitePostsNewest() {
         return this.$site.pages
-          .filter((p) => p.id === "post")
+          .filter((p) => p.id === "post" && !p.frontmatter.extract)
           .sort((a, b) => {
             if (a.frontmatter.updated < b.frontmatter.updated) {
               return 1;

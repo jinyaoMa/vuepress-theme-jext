@@ -5,6 +5,7 @@ module.exports = {
   archive: "Archive",
   category: "Category",
   tag: "Tag",
+  menu: "Menu",
 
   unit: {
     post: {

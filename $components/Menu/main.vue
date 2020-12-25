@@ -1,11 +1,19 @@
 <template>
   <div
-    class="j-menu flex flex-horizontal"
+    class="j-menu flex"
+    :class="{
+      'flex-horizontal': direction === 'horizontal',
+      'flex-vertical': direction === 'vertical',
+    }"
     :style="{
       paddingLeft: direction === 'horizontal' && padding,
       paddingRight: direction === 'horizontal' && padding,
+      paddingTop: direction === 'vertical' && padding,
+      paddingBottom: direction === 'vertical' && padding,
       height: direction === 'horizontal' && size,
-      fontSize: direction === 'horizontal' && `calc(${size} / 4)`,
+      fontSize:
+        (direction === 'horizontal' && `calc(${size} / 4)`) ||
+        (direction === 'vertical' && `calc(${size} / 3)`),
     }"
   >
     <div
@@ -13,21 +21,32 @@
       v-for="(link, i) in links"
       :key="i"
       :style="{
-        lineHeight: direction === 'horizontal' && size,
+        lineHeight: size,
+        color: textColorVertical(link.to),
       }"
       :class="{
-        'is-active': exact
-          ? $route.path === link.to
-          : $route.path.startsWith(link.to),
+        'is-active': isActive(link.to),
       }"
       @click="$router.push(link.to)"
     >
       <i v-if="link.icon" :class="link.icon"></i>
-      {{ link.text[langKey] }}
+      <span>{{ link.text[langKey] }}</span>
       <div
-        class="j-menu-item-underline"
+        class="j-menu-item-hover"
         :style="{
-          backgroundColor: barColor,
+          backgroundColor: hoverBackgroundColor,
+        }"
+      ></div>
+      <div
+        class="j-menu-item-active-background"
+        :style="{
+          backgroundColor: activeBackgroundColor,
+        }"
+      ></div>
+      <div
+        class="j-menu-item-active"
+        :style="{
+          backgroundColor: activeColor,
         }"
       ></div>
     </div>
@@ -84,11 +103,51 @@ export default {
         return true;
       },
     },
-    barColor: {
+    activeColor: {
       type: String,
       default() {
         return "#cc66ff";
       },
+    },
+    activeTextColor: {
+      type: String,
+      default() {
+        return "#ffffff";
+      },
+    },
+    activeBackgroundColor: {
+      type: String,
+      default() {
+        return "#ffffff";
+      },
+    },
+    hoverBackgroundColor: {
+      type: String,
+      default() {
+        return "#f1f2f3";
+      },
+    },
+  },
+  computed: {
+    isActive() {
+      return function (to) {
+        return this.exact
+          ? this.$route.path === to
+          : this.$route.path.startsWith(to);
+      };
+    },
+    textColorVertical() {
+      return function (to) {
+        if (this.direction === "vertical") {
+          const flag = this.exact
+            ? this.$route.path === to
+            : this.$route.path.startsWith(to);
+          if (flag) {
+            return this.activeTextColor;
+          }
+        }
+        return "";
+      };
     },
   },
 };
@@ -98,24 +157,63 @@ export default {
 .j-menu
   position relative
   user-select none
-  &.flex-horizontal
-    .j-menu-item
-      padding 0 1em
-      &:hover
-        .j-menu-item-underline
-          height 0.2em
-      &.is-active
-        .j-menu-item-underline
-          height 0.2em
   .j-menu-item
     position relative
     cursor pointer
-  .j-menu-item-underline
-    content ''
+    padding 0 1em
+    transition background-color 0.2s
+    > i, > span
+      position relative
+      z-index 1
+    &:hover
+      .j-menu-item-hover
+        opacity 1
+    &.is-active
+      .j-menu-item-active-background
+        opacity 1
+  .j-menu-item-hover
     position absolute
-    bottom 0
+    top 0
     left 0
     width 100%
-    height 0
-    transition height 0.2s
+    height 100%
+    opacity 0
+    transition opacty 0.2s
+  .j-menu-item-active, .j-menu-item-active-background
+    position absolute
+  .j-menu-item-active-background
+    top 0
+    left 0
+    height 100%
+    width 100%
+    opacity 0
+    transition opacity 0.2s
+  &.flex-horizontal
+    .j-menu-item-active
+      bottom 0
+      left 0
+      width 100%
+      height 0
+      transition height 0.2s
+    .j-menu-item
+      > i
+        margin-right 0.25em
+      &.is-active
+        .j-menu-item-active
+          height 0.2em
+  &.flex-vertical
+    .j-menu-item-active
+      width 0.8em
+      height 0.8em
+      right 1em
+      top calc(50% - 0.4em)
+      border-radius 50%
+      opacity 0
+      transition opacity 0.2s
+    .j-menu-item
+      > i
+        margin-right 0.5em
+      &.is-active
+        .j-menu-item-active
+          opacity 1
 </style>

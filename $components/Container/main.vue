@@ -19,19 +19,20 @@
     >
       <i v-if="icon" :class="icon"></i>
       <span
-        v-html="title"
         class="flex-fill"
         :style="{
           marginLeft: gap,
           marginRight: gap,
         }"
-      ></span>
+      >
+        {{ title }}
+      </span>
       <i
-        v-if="!hideExtendIcons && extendIcons && extendIcons[0] && isExtend"
+        v-if="!hideExtendIcon && extendIcons && extendIcons[0] && isExtend"
         :class="extendIcons[0]"
       ></i>
       <i
-        v-if="!hideExtendIcons && extendIcons && extendIcons[1] && !isExtend"
+        v-if="!hideExtendIcon && extendIcons && extendIcons[1] && !isExtend"
         :class="extendIcons[1]"
       ></i>
     </div>
@@ -100,7 +101,13 @@ export default {
         return ["fas fa-minus", "fas fa-plus"];
       },
     },
-    hideExtendIcons: {
+    hideExtendIcon: {
+      type: Boolean,
+      default() {
+        return false;
+      },
+    },
+    disabled: {
       type: Boolean,
       default() {
         return false;
@@ -109,6 +116,7 @@ export default {
   },
   methods: {
     handleClick() {
+      if (this.disabled) return;
       this.isExtend = !this.isExtend;
       this.setExtend(this.isExtend);
     },
@@ -150,6 +158,7 @@ export default {
   .j-container-title
     font-size 0.8em
     align-items baseline
+    user-select none
   .j-container-box
     overflow hidden
     transition height 0.2s

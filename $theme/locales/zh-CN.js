@@ -5,6 +5,7 @@ module.exports = {
   archive: "归档",
   category: "分类",
   tag: "标签",
+  menu: "菜单",
 
   unit: {
     post: {

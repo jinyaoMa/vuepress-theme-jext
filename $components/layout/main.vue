@@ -252,7 +252,7 @@ export default {
       type: Object,
       default() {
         return {
-          width: "300px",
+          width: "280px",
         };
       },
     },
@@ -260,7 +260,7 @@ export default {
       type: Object,
       default() {
         return {
-          width: "300px",
+          width: "280px",
         };
       },
     },

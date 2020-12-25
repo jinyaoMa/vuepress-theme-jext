@@ -38,6 +38,7 @@ module.exports = {
         link: "tencent://Message/?uin=907881445"
       }
     ],
+    blogMenu: [],
     navMenu: [
       {
         text: {
