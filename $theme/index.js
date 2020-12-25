@@ -4,6 +4,14 @@ const enUS = require("./locales/en-US");
 module.exports = (themeConfig, _) => {
   const name = "@jinyaoma/vuepress-theme-jext";
 
+  themeConfig._j$Blog = {
+    links: {
+      archive: "/posts/",
+      category: "/categories/",
+      tag: "/tags/"
+    }
+  };
+
   const plugins = [
     [
       // https://vuepress-plugin-blog.ulivz.com/

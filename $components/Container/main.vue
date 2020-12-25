@@ -113,10 +113,17 @@ export default {
       this.setExtend(this.isExtend);
     },
     setExtend(flag) {
+      if (this.$isServer) return;
       if (flag) {
         this.$refs.box.style.height = this.$refs.box.scrollHeight + "px";
+        setTimeout(() => {
+          this.$refs.box.style.height = "auto";
+        }, 16);
       } else {
-        this.$refs.box.style.height = "0";
+        this.$refs.box.style.height = this.$refs.box.scrollHeight + "px";
+        setTimeout(() => {
+          this.$refs.box.style.height = "0";
+        }, 16);
       }
     },
   },

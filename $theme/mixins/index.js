@@ -93,6 +93,15 @@ export default (Vuex) => {
         }
         return result;
       },
+      j$SiteTotalPosts() {
+        return this.$site.pages.filter((p) => p.id === "post").length;
+      },
+      j$SiteTotalCategories() {
+        return this.$category.length;
+      },
+      j$SiteTotalTags() {
+        return this.$tag.length;
+      },
       j$SitePosts() {
         return this.$site.pages
           .filter((p) => p.id === "post")

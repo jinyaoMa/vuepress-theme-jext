@@ -12,14 +12,47 @@ module.exports = {
   themeConfig: {
     title: {
       zh: `耀 の <strong>私人空间</strong>`,
-      en: `Jinyao's <strong>SPACE</strong>`
+      en: `Mark's <strong>SPACE</strong>`
     },
     playlistApi: `https://api.i-meto.com/meting/api?server=netease&type=playlist&id=4989572738&r=${Math.random()}`,
+    avatar: "/assets/img/avatar.png",
+    author: {
+      zh: `耀`,
+      en: `Mark`
+    },
+    signature: {
+      zh: `问题, 方法, 程序, 标准, 解决`,
+      en: `issue, func, flow, std, solve`
+    },
+    brandButtons: [
+      {
+        icon: "fab fa-github",
+        link: "https://github.com/jinyaoMa"
+      },
+      {
+        icon: "fas fa-envelope",
+        link: "mailto://jinyao.ma@outlook.com"
+      },
+      {
+        icon: "fab fa-qq",
+        link: "tencent://Message/?uin=907881445"
+      }
+    ],
+    navMenu: [
+      {
+        text: {
+          zh: "博客",
+          en: "Blog"
+        },
+        icon: "fas fa-blog",
+        to: "/"
+      }
+    ],
     copyright: `© 2019 - ${new Date().getFullYear()} jinyaoMa`,
     qrcodes: [
       {
         text: {
-          zh: "QQ群",
+          zh: "QQ 群",
           en: "QQ Group"
         },
         image: "/assets/img/qq.group.png"
@@ -37,16 +70,6 @@ module.exports = {
           en: "WeChat"
         },
         image: "/assets/img/wechat.png"
-      }
-    ],
-    navMenu: [
-      {
-        text: {
-          zh: "博客",
-          en: "Blog"
-        },
-        icon: "fas fa-blog",
-        to: "/"
       }
     ]
   },

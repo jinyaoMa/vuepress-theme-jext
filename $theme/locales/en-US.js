@@ -6,6 +6,21 @@ module.exports = {
   category: "Category",
   tag: "Tag",
 
+  unit: {
+    post: {
+      0: "posts",
+      1: "post"
+    },
+    category: {
+      0: "cates",
+      1: "cate"
+    },
+    tag: {
+      0: "tags",
+      1: "tag"
+    }
+  },
+
   footer: {
     powered: "Powered by [:vuepress:]",
     themed: "Theme [:theme:] By [:author:]",

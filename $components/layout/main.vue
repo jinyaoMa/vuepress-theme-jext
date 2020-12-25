@@ -20,7 +20,7 @@
         paddingRight: gap,
       }"
     >
-      <slot name="header">header</slot>
+      <slot name="header"></slot>
     </div>
     <div
       class="j-layout-inner"
@@ -60,12 +60,7 @@
                 paddingBottom: gap,
               }"
             >
-              <slot name="drawer">
-                drawer
-                <div
-                  style="height: 800px; border-bottom: 2px dashed #ccc"
-                ></div>
-              </slot>
+              <slot name="drawer"></slot>
             </div>
           </div>
           <div
@@ -84,12 +79,7 @@
                 paddingLeft: column === 1 && gap,
               }"
             >
-              <slot name="main">
-                main
-                <div
-                  style="height: 1000px; border-bottom: 2px dashed #ccc"
-                ></div>
-              </slot>
+              <slot name="main"></slot>
             </div>
             <div
               class="j-layout-aside"
@@ -109,12 +99,7 @@
                   paddingBottom: gap,
                 }"
               >
-                <slot name="aside">
-                  aside
-                  <div
-                    style="height: 500px; border-bottom: 2px dashed #ccc"
-                  ></div>
-                </slot>
+                <slot name="aside"></slot>
               </div>
             </div>
           </div>
@@ -136,7 +121,7 @@
               paddingBottom: scrollControl.size || '14px',
             }"
           >
-            <slot name="footer">footer</slot>
+            <slot name="footer"></slot>
           </div>
         </div>
       </div>
