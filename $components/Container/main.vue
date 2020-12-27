@@ -30,10 +30,16 @@
       <i
         v-if="!hideExtendIcon && extendIcons && extendIcons[0] && isExtend"
         :class="extendIcons[0]"
+        :style="{
+          marginRight: !icon && gap,
+        }"
       ></i>
       <i
         v-if="!hideExtendIcon && extendIcons && extendIcons[1] && !isExtend"
         :class="extendIcons[1]"
+        :style="{
+          marginRight: !icon && gap,
+        }"
       ></i>
     </div>
     <div ref="box" class="j-container-box">
@@ -68,7 +74,7 @@ export default {
     icon: {
       type: String,
       default() {
-        return "fas fa-circle-notch";
+        return "";
       },
     },
     title: {

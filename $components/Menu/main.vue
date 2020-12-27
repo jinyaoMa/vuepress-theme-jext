@@ -92,6 +92,7 @@ export default {
             text: {
               en: "Test",
             },
+            icon: "",
             to: "/",
           },
         ];
@@ -161,7 +162,6 @@ export default {
     position relative
     cursor pointer
     padding 0 1em
-    transition background-color 0.2s
     > i, > span
       position relative
       z-index 1
@@ -178,7 +178,7 @@ export default {
     width 100%
     height 100%
     opacity 0
-    transition opacty 0.2s
+    transition opacity 0.2s
   .j-menu-item-active, .j-menu-item-active-background
     position absolute
   .j-menu-item-active-background

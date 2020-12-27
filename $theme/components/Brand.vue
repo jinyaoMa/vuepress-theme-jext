@@ -1,5 +1,5 @@
 <template>
-  <j-container hide-title>
+  <j-container hide-title :title="j$Locale.overview" hide-extend-icon>
     <div class="Brand flex flex-vertical">
       <div
         class="avatar"
@@ -26,7 +26,7 @@
         </div>
         <div
           class="flex flex-vertical"
-          @click="handleClick($themeConfig._j$Blog.links.archive)"
+          @click="handleClick($themeConfig._j$Blog.links.category)"
         >
           <div class="count-number" v-html="j$SiteTotalCategories"></div>
           <div
@@ -40,7 +40,7 @@
         </div>
         <div
           class="flex flex-vertical"
-          @click="handleClick($themeConfig._j$Blog.links.archive)"
+          @click="handleClick($themeConfig._j$Blog.links.tag)"
         >
           <div class="count-number" v-html="j$SiteTotalTags"></div>
           <div
@@ -80,7 +80,7 @@ export default {
   name: "Brand",
   methods: {
     handleClick(to) {
-      this.$router.push(to);
+      this.$router.push(this.$withBase(to));
     },
   },
 };

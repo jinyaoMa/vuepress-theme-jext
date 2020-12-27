@@ -1,10 +1,5 @@
 <template>
-  <j-container
-    :title="j$Locale.menu"
-    icon="fas fa-bars"
-    disabled
-    hide-extend-icon
-  >
+  <j-container :title="j$Locale.menu" disabled hide-extend-icon>
     <j-menu
       class="BlogMenu"
       direction="vertical"

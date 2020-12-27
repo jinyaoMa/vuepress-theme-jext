@@ -6,6 +6,13 @@ module.exports = {
   category: "Category",
   tag: "Tag",
   menu: "Menu",
+  blog: "Blog",
+  settings: "Settings",
+  overview: "Overview",
+  nightshift: "Night Shift",
+  language: "中文",
+  gallery: "Gallery",
+  skin: "Skin",
 
   unit: {
     post: {

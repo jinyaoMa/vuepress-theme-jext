@@ -1,8 +1,54 @@
 const zhCN = require("./locales/zh-CN");
 const enUS = require("./locales/en-US");
+const path = require("path");
+const fs = require("fs");
 
-module.exports = (themeConfig, _) => {
+const generateGallery = (context) => {
+  let result = {
+    page: {},
+    list: []
+  };
+  let projectPath = "./";
+  const regex = /^.+\.(bmp|png|jpeg|jpg|gif|svg|webp)$/;
+  if (process.argv.length === 4 && /(dev|build)/.test(process.argv[2])) {
+    const projectName = process.argv[3];
+    projectPath = path.resolve(
+      process.cwd(),
+      projectName,
+      ".vuepress/public/gallery"
+    );
+  } else if (process.argv.length === 3 && /(dev|build)/.test(process.argv[2])) {
+    projectPath = path.resolve(process.cwd(), ".vuepress/public/gallery");
+  }
+  if (fs.existsSync(projectPath) && fs.statSync(projectPath).isDirectory()) {
+    const ls = fs.readdirSync(projectPath);
+    if (ls && ls.length) {
+      ls.forEach((filename) => {
+        regex.test(filename) &&
+          result.list.push({
+            name: filename,
+            url: context.base + "gallery/" + filename
+          });
+      });
+      result.page = {
+        path: "/gallery/",
+        frontmatter: {
+          layout: "Layout",
+          title: `${zhCN.gallery} | ${enUS.gallery}`,
+          gallery: {
+            enabled: true
+          }
+        }
+      };
+    }
+  }
+  return result;
+};
+
+module.exports = (themeConfig, context) => {
   const name = "@jinyaoma/vuepress-theme-jext";
+
+  const gallery = generateGallery(context);
 
   themeConfig._j$Blog = {
     links: {
@@ -10,6 +56,17 @@ module.exports = (themeConfig, _) => {
       category: "/categories/",
       tag: "/tags/"
     },
+    navMenu: [
+      {
+        text: {
+          zh: zhCN.blog,
+          en: enUS.blog
+        },
+        icon: "fas fa-blog",
+        to: "/"
+      },
+      ...(themeConfig.navMenu instanceof Array ? themeConfig.navMenu : [])
+    ],
     blogMenu: [
       {
         text: {
@@ -19,7 +76,37 @@ module.exports = (themeConfig, _) => {
         icon: "fas fa-archive fa-fw",
         to: "/posts/"
       },
+      {
+        text: {
+          zh: zhCN.gallery,
+          en: enUS.gallery
+        },
+        icon: "fas fa-images fa-fw",
+        to: "/gallery/"
+      },
       ...(themeConfig.blogMenu instanceof Array ? themeConfig.blogMenu : [])
+    ],
+    settings: [
+      {
+        id: "nightshift",
+        text: {
+          zh: zhCN.nightshift,
+          en: enUS.nightshift
+        },
+        icon: "fas fa-adjust fa-fw"
+      },
+      {
+        id: "language",
+        text: {
+          zh: zhCN.language,
+          en: enUS.language
+        },
+        icon: "fas fa-language fa-fw"
+      }
+    ],
+    gallery: [
+      ...gallery.list,
+      ...(themeConfig.gallery instanceof Array ? themeConfig.gallery : [])
     ]
   };
 
@@ -91,7 +178,8 @@ module.exports = (themeConfig, _) => {
         layout: "Home",
         title: `${zhCN.home} | ${enUS.home}`
       }
-    }
+    },
+    gallery.page
   ];
 
   const extendPageData = ($page) => {

@@ -1,34 +1,38 @@
 <template>
-  <j-container
-    :title="j$Locale.menu"
-    icon="fas fa-bars"
-    disabled
-    hide-extend-icon
-  >
-    <j-menu
-      class="BlogMenu"
-      direction="vertical"
-      size="3em"
-      padding="4px"
-      active-color="#00ccff"
-      active-text-color="#ffffff"
-      active-background-color="#333333"
-      exact
-      :links="blogMenu"
+  <j-container :title="j$Locale.settings" disabled hide-extend-icon>
+    <j-panel
+      :options="settingOptions"
       :lang-key="j$Lang"
-    ></j-menu>
+      active-key="id"
+      :switch-colors="['#cc66ff', '#ffffff']"
+      :active-option="activeOption"
+      @click="handleClick"
+    ></j-panel>
   </j-container>
 </template>
 
 <script>
 export default {
   name: "Settings",
+  data() {
+    return {
+      activeOption: [],
+    };
+  },
   computed: {
-    blogMenu() {
-      return this.$themeConfig._j$Blog.blogMenu.map((link) => {
-        link.to = this.$withBase(link.to);
-        return link;
-      });
+    settingOptions() {
+      return this.$themeConfig._j$Blog.settings;
+    },
+  },
+  methods: {
+    handleClick({ key, index, flag }) {
+      if (flag) {
+        this.activeOption.push(key);
+      } else {
+        this.activeOption = this.activeOption
+          .slice(0, index)
+          .concat(this.activeOption.slice(index + 1, this.activeOption.length));
+      }
     },
   },
 };

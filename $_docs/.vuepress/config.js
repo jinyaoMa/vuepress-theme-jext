@@ -38,16 +38,13 @@ module.exports = {
         link: "tencent://Message/?uin=907881445"
       }
     ],
+    navMenu: [],
     blogMenu: [],
-    navMenu: [
-      {
-        text: {
-          zh: "博客",
-          en: "Blog"
-        },
-        icon: "fas fa-blog",
-        to: "/"
-      }
+    gallery: [
+      /*{ format; these gallery items will be appended to /gallery/ page
+            name: 'test image from baidu',
+            url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596063652971&di=8b659ee5cd46f4006d082b626eb3bd0d&imgtype=0&src=http%3A%2F%2Fpicture.ik123.com%2Fuploads%2Fallimg%2F180330%2F4-1P330160644.jpg'
+          }*/
     ],
     copyright: `© 2019 - ${new Date().getFullYear()} jinyaoMa`,
     qrcodes: [

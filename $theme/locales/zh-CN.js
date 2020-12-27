@@ -6,6 +6,13 @@ module.exports = {
   category: "分类",
   tag: "标签",
   menu: "菜单",
+  blog: "博客",
+  settings: "设置",
+  overview: "简介",
+  nightshift: "夜间模式",
+  language: "English",
+  gallery: "图库",
+  skin: "皮肤",
 
   unit: {
     post: {

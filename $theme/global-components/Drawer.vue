@@ -2,6 +2,7 @@
   <div class="Drawer flex flex-vertical">
     <Brand></Brand>
     <BlogMenu></BlogMenu>
+    <Skin></Skin>
     <Settings></Settings>
   </div>
 </template>
@@ -10,6 +11,7 @@
 import Brand from "../components/Brand";
 import BlogMenu from "../components/BlogMenu";
 import Settings from "../components/Settings";
+import Skin from "../components/Skin";
 
 export default {
   name: "Drawer",
@@ -17,6 +19,7 @@ export default {
     Brand,
     BlogMenu,
     Settings,
+    Skin,
   },
 };
 </script>

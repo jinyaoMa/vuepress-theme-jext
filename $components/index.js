@@ -5,13 +5,15 @@ import Audio from "./Audio";
 import Link from "./Link";
 import Menu from "./Menu";
 import Container from "./Container";
+import Panel from "./Panel";
 
 const components = {
   Layout,
   Audio,
   Link,
   Menu,
-  Container
+  Container,
+  Panel
 };
 
 const install = function(Vue) {
