@@ -415,6 +415,7 @@ export default {
 .j-layout
   position relative
   overflow hidden
+  transition color 0.6s, background 0.6s
   .j-layout-inner
     width 100%
     position relative

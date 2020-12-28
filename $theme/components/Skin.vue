@@ -1,6 +1,6 @@
 <template>
   <j-container :title="j$Locale.skin" disabled hide-extend-icon>
-    <div></div>
+    <j-skin-panel></j-skin-panel>
   </j-container>
 </template>
 

@@ -6,6 +6,7 @@ import Link from "./Link";
 import Menu from "./Menu";
 import Container from "./Container";
 import Panel from "./Panel";
+import SkinPanel from "./SkinPanel";
 
 const components = {
   Layout,
@@ -13,7 +14,8 @@ const components = {
   Link,
   Menu,
   Container,
-  Panel
+  Panel,
+  SkinPanel
 };
 
 const install = function(Vue) {
