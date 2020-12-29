@@ -15,8 +15,10 @@
       <Footer slot="footer"></Footer>
       <Drawer slot="drawer"></Drawer>
       <Aside slot="aside"></Aside>
+      <Main slot="main" :layout="layout">
+        <component :is="layout" />
+      </Main>
     </j-layout>
-    <component :is="layout" />
   </div>
 </template>
 

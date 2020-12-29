@@ -5,6 +5,7 @@
       :lang-key="j$Lang"
       active-key="id"
       :active-option="activeOption"
+      :column="4"
       @click="handleClick"
     ></j-skin-panel>
   </j-container>

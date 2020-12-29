@@ -15,6 +15,7 @@ module.exports = {
   skin: "皮肤",
   default: "默认",
   black: "黑色",
+  hitokoto: "一言",
 
   unit: {
     post: {

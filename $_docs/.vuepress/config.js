@@ -40,6 +40,12 @@ module.exports = {
     ],
     navMenu: [],
     blogMenu: [],
+    // clustrmaps setting
+    clustrmaps: {
+      id: "clustrmaps", // clstr_globe / clustrmaps
+      src:
+        "//cdn.clustrmaps.com/map_v2.js?cl=333333&w=a&t=t&d=kuCCiVvtASTqmAMxPSTLcjxs-p8j6ht3LUi9z9Q-OKc&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=333333"
+    },
     gallery: [
       /*{ format; these gallery items will be appended to /gallery/ page
             name: 'test image from baidu',

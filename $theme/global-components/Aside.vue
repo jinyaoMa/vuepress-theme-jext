@@ -2,18 +2,21 @@
   <div class="Aside flex flex-vertical">
     <Categories></Categories>
     <Tags></Tags>
+    <Clustrmaps></Clustrmaps>
   </div>
 </template>
 
 <script>
 import Categories from "../components/Categories";
 import Tags from "../components/Tags";
+import Clustrmaps from "../components/Clustrmaps";
 
 export default {
   name: "Aside",
   components: {
     Categories,
     Tags,
+    Clustrmaps,
   },
 };
 </script>

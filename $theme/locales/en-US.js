@@ -15,6 +15,7 @@ module.exports = {
   skin: "Skin",
   default: "Default",
   black: "Black",
+  hitokoto: "Hitokoto",
 
   unit: {
     post: {

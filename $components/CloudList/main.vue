@@ -43,7 +43,7 @@ export default {
     gap: {
       type: String,
       default() {
-        return "10px";
+        return "12px";
       },
     },
     multiple: {
