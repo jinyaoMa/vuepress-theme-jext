@@ -1,11 +1,9 @@
 <template>
   <div class="Main flex flex-vertical">
-    <transition name="fade">
-      <template v-if="layout === 'Home'">
-        <Hitokoto></Hitokoto>
-        <slot></slot>
-      </template>
-    </transition>
+    <transition-group name="fade">
+      <Hitokoto v-if="layout === 'Home'" key="hitokoto"></Hitokoto>
+      <slot></slot>
+    </transition-group>
   </div>
 </template>
 

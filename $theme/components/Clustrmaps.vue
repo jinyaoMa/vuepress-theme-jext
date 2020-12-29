@@ -37,6 +37,7 @@ export default {
 
 <style lang="stylus" scoped>
 .Clustrmaps
+  padding-top 10px
   >>> a:before
     display none
 </style>

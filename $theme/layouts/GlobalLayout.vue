@@ -16,7 +16,7 @@
       <Drawer slot="drawer"></Drawer>
       <Aside slot="aside"></Aside>
       <Main slot="main" :layout="layout">
-        <component :is="layout" />
+        <component :is="layout" :key="layout" />
       </Main>
     </j-layout>
   </div>
