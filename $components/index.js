@@ -7,6 +7,8 @@ import Menu from "./Menu";
 import Container from "./Container";
 import Panel from "./Panel";
 import SkinPanel from "./SkinPanel";
+import CounterList from "./CounterList";
+import CloudList from "./CloudList";
 
 const components = {
   Layout,
@@ -15,7 +17,9 @@ const components = {
   Menu,
   Container,
   Panel,
-  SkinPanel
+  SkinPanel,
+  CounterList,
+  CloudList
 };
 
 const install = function(Vue) {

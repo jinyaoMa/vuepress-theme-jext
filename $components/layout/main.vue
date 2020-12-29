@@ -73,13 +73,19 @@
             <div
               class="j-layout-main flex-fill"
               :style="{
-                paddingTop: column !== 1 && gap,
-                paddingBottom: column === 3 && gap,
                 paddingRight: column !== 3 && gap,
                 paddingLeft: column === 1 && gap,
               }"
             >
-              <slot name="main"></slot>
+              <div
+                class="j-layout-main-inner"
+                :style="{
+                  paddingTop: column !== 1 && gap,
+                  paddingBottom: column === 3 && gap,
+                }"
+              >
+                <slot name="main"></slot>
+              </div>
             </div>
             <div
               class="j-layout-aside"
@@ -357,11 +363,12 @@ export default {
     },
     initThumb() {
       if (!this.$refs.frame) return;
+      this.currentScrollHeight = this.$refs.frame.scrollHeight;
       this.thumbDistance =
-        this.$refs.frame.scrollHeight - this.$refs.frame.offsetHeight;
+        this.currentScrollHeight - this.$refs.frame.offsetHeight;
       this.noScroll = this.thumbDistance <= 0;
       this.thumbHeight =
-        (this.$refs.frame.offsetHeight / this.$refs.frame.scrollHeight) *
+        (this.$refs.frame.offsetHeight / this.currentScrollHeight) *
         this.$refs.scrollbar.offsetHeight;
       this.limitThumbTranslate =
         this.$refs.scrollbar.offsetHeight - this.thumbHeight;
@@ -370,6 +377,9 @@ export default {
         this.limitThumbTranslate;
     },
     setThumbTransform() {
+      if (this.$refs.frame.scrollHeight !== this.currentScrollHeight) {
+        this.initThumb();
+      }
       this.thumbTransfrom =
         (this.$refs.frame.scrollTop / this.thumbDistance) *
         this.limitThumbTranslate;
@@ -400,6 +410,7 @@ export default {
       onThumbMousedown: null,
       onThumbMousemove: null,
       onThumbMouseup: null,
+      currentScrollHeight: 0,
     };
   },
   mounted() {
@@ -461,7 +472,7 @@ export default {
     pointer-events auto
     user-select none
     cursor pointer
-    transition opacity 0.2s
+    transition opacity 0.2s, height 0.2s
     opacity 0
     &:hover
       opacity 1 !important
@@ -485,7 +496,7 @@ export default {
       display none
   .j-layout-drawer, .j-layout-drawer-inner, .j-layout-main, .j-layout-aside, .j-layout-aside-inner, .j-layout-footer
     box-sizing border-box
-  .j-layout-drawer-inner, .j-layout-aside-inner
+  .j-layout-drawer-inner, .j-layout-aside-inner, .j-layout-main-inner
     position sticky
     top 0
     overflow hidden

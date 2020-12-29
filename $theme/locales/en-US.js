@@ -13,6 +13,8 @@ module.exports = {
   language: "中文",
   gallery: "Gallery",
   skin: "Skin",
+  default: "Default",
+  black: "Black",
 
   unit: {
     post: {

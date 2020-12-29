@@ -17,7 +17,13 @@
       }"
       @click="handleClick"
     >
-      <i v-if="icon" :class="icon"></i>
+      <i
+        v-if="icon"
+        :class="icon"
+        :style="{
+          marginLeft: gap,
+        }"
+      ></i>
       <span
         class="flex-fill"
         :style="{

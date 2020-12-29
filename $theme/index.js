@@ -104,6 +104,26 @@ module.exports = (themeConfig, context) => {
         icon: "fas fa-language fa-fw"
       }
     ],
+    skins: [
+      {
+        id: "default",
+        text: {
+          zh: zhCN.default,
+          en: enUS.default
+        },
+        skin: "linear-gradient(120deg, #ff3300, #cc66ff, #00ccff)",
+        color: "#ffffff"
+      },
+      {
+        id: "black",
+        text: {
+          zh: zhCN.black,
+          en: enUS.black
+        },
+        skin: "#666666",
+        color: "#ffffff"
+      }
+    ],
     gallery: [
       ...gallery.list,
       ...(themeConfig.gallery instanceof Array ? themeConfig.gallery : [])

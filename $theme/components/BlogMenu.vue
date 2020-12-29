@@ -20,10 +20,7 @@ export default {
   name: "BlogMenu",
   computed: {
     blogMenu() {
-      return this.$themeConfig._j$Blog.blogMenu.map((link) => {
-        link.to = this.$withBase(link.to);
-        return link;
-      });
+      return this.$themeConfig._j$Blog.blogMenu;
     },
   },
 };

@@ -80,7 +80,7 @@ export default {
   name: "Brand",
   methods: {
     handleClick(to) {
-      this.$router.push(this.$withBase(to));
+      this.$router.push(to);
     },
   },
 };

@@ -102,6 +102,10 @@ export default {
 .Footer
   height 100%
   user-select none
+  >>> a
+    color #ff3300
+    &:before
+      background-color #00ccff
 
 .info
   > div

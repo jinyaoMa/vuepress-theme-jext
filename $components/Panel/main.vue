@@ -9,8 +9,8 @@
   >
     <div
       class="j-panel-item flex flex-horizontal flex-align-center"
-      v-for="(option, i) in options"
-      :key="i"
+      v-for="option in options"
+      :key="option[activeKey]"
       :style="{
         lineHeight: size,
       }"
@@ -120,7 +120,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 .j-panel
   position relative
   user-select none

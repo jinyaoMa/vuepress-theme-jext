@@ -28,10 +28,7 @@ export default {
   },
   computed: {
     navMenu() {
-      return this.$themeConfig._j$Blog.navMenu.map((link) => {
-        link.to = this.$withBase(link.to);
-        return link;
-      });
+      return this.$themeConfig._j$Blog.navMenu;
     },
   },
   data() {

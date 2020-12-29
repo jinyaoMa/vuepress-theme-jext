@@ -14,6 +14,7 @@
       <Header slot="header"></Header>
       <Footer slot="footer"></Footer>
       <Drawer slot="drawer"></Drawer>
+      <Aside slot="aside"></Aside>
     </j-layout>
     <component :is="layout" />
   </div>
