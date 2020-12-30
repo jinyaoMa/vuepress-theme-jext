@@ -7,15 +7,16 @@
     }"
     :style="{
       borderRadius: round && '4px',
-      boxShadow: `0 2px 2px ${backColor}, 0 0 0 1px ${backColor}`,
+      boxShadow: shadow && `0 2px 2px ${coverColor}, 0 0 0 1px ${coverColor}`,
+      height: direction === 'horizontal' && height,
     }"
   >
     <router-link
-      class="j-post-card-cover background-image-fix"
+      class="j-post-card-cover"
       :style="{
         height,
-        width: maxWidth,
-        backgroundColor: backColor,
+        minWidth: direction === 'horizontal' && maxWidth,
+        backgroundColor: coverColor,
         backgroundImage: `url('${options.cover}')`,
       }"
       :to="options.path"
@@ -26,6 +27,7 @@
       class="flex-fill flex flex-vertical"
       :style="{
         padding: gap,
+        backgroundColor,
       }"
     >
       <router-link
@@ -58,8 +60,16 @@
         :style="{
           height: `calc(100% - ${gap} * 3 - 3.4em)`,
         }"
-        v-html="options.excerpt"
-      ></div>
+      >
+        <div v-html="options.excerpt"></div>
+        <div
+          v-if="direction === 'horizontal'"
+          class="j-post-card-exceprt-after"
+          :style="{
+            background: `linear-gradient(0deg, ${backgroundColor}, transparent)`,
+          }"
+        ></div>
+      </div>
       <div
         class="flex flex-horizontal flex-wrap flex-justify-between flex-align-center"
         :style="{
@@ -116,16 +126,28 @@ export default {
         return "320px";
       },
     },
-    backColor: {
+    coverColor: {
       type: String,
       default() {
         return "#e1e2e3";
       },
     },
+    backgroundColor: {
+      type: String,
+      default() {
+        return "#ffffff";
+      },
+    },
     round: {
       type: Boolean,
       default() {
-        return true;
+        return false;
+      },
+    },
+    shadow: {
+      type: Boolean,
+      default() {
+        return false;
       },
     },
     textMore: {
@@ -166,16 +188,20 @@ export default {
   .j-post-card-cover, .j-post-card-more
     cursor pointer
     user-select none
+  .j-post-card-cover
+    background-repeat no-repeat
+    background-position center center
+    background-size cover
   .j-post-card-title
     font-size 1.5em
     line-height 1.2
     font-weight 600
     cursor pointer
-    width min-content
+    width fit-content
   .j-post-card-date
     margin-right 1em
   .j-post-card-date, .j-post-card-updated, .j-post-card-categories, .j-post-card-more
-    width min-content
+    width fit-content
     white-space nowrap
     font-size 0.8em
     line-height 1
@@ -184,5 +210,13 @@ export default {
     &:hover
       opacity 1
   .j-post-card-exceprt
+    position relative
     overflow hidden
+    *
+      margin 0
+  .j-post-card-exceprt-after
+    position absolute
+    bottom 0
+    width 100%
+    height 1.25em
 </style>

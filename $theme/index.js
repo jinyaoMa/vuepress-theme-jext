@@ -163,6 +163,10 @@ module.exports = (themeConfig, context) => {
             keys: ["category", "categories"],
             path: "/categories/",
             title: `${zhCN.category} | ${enUS.category}`,
+            frontmatter: {
+              title_zh: zhCN.category,
+              title_en: enUS.category
+            },
             scopeLayout: "Archive"
           },
           {
@@ -170,6 +174,10 @@ module.exports = (themeConfig, context) => {
             keys: ["tag", "tags"],
             path: "/tags/",
             title: `${zhCN.tag} | ${enUS.tag}`,
+            frontmatter: {
+              title_zh: zhCN.tag,
+              title_en: enUS.tag
+            },
             scopeLayout: "Archive"
           }
         ],
@@ -246,9 +254,9 @@ module.exports = (themeConfig, context) => {
 
     // pangu
     if (_strippedContent) {
-      const pangu = require("pangu");
-      frontmatter.title = $page.title = pangu.spacing($page.title || "");
-      $page.excerpt = pangu.spacing($page.excerpt || "");
+      const pangunode = require("./scripts/pangunode");
+      frontmatter.title = $page.title = pangunode($page.title || "");
+      $page.excerpt = pangunode($page.excerpt.replace(/<img[^>]*>/g, "") || "");
     }
 
     // word count && read time

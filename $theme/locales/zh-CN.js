@@ -18,6 +18,8 @@ module.exports = {
   hitokoto: "一言",
   comment: "评论 & 留言 & 骚话",
   recentPosts: "近期文章",
+  more: "加载更多",
+  timeline: "文章档案",
 
   unit: {
     post: {

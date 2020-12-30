@@ -1,10 +1,5 @@
 <template>
-  <j-container
-    :title="j$Locale.tag"
-    icon="fas fa-tags fa-fw"
-    disabled
-    hide-extend-icon
-  >
+  <j-container :title="j$Locale.tag" disabled hide-extend-icon>
     <j-cloud-list class="Tags" :options="tagOptions"></j-cloud-list>
   </j-container>
 </template>

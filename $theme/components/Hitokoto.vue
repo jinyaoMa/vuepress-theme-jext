@@ -1,10 +1,5 @@
 <template>
-  <j-container
-    :title="j$Locale.hitokoto"
-    icon="fas fa-circle-notch fa-fw"
-    disabled
-    hide-extend-icon
-  >
+  <j-container :title="j$Locale.hitokoto" disabled hide-extend-icon>
     <div class="Hitokoto">
       <div class="before"></div>
       <div class="word" v-html="j$Hitokoto.word"></div>
@@ -28,6 +23,8 @@ export default {
   line-height 1.5
   position relative
   border-bottom 4px solid #f1f2f3
+  padding-left 40px
+  padding-right 40px
   padding-bottom $hitokotoImgHeight * 0.66
   @media (max-width $smallestWidth)
     padding-bottom $hitokotoImgHeight * 0.33
@@ -42,10 +39,10 @@ export default {
       height $hitokotoImgHeight * 0.33
       width $hitokotoImgWidth * 0.33
   .before
-    left 0
+    left 40px
     background-image url('../statics/hitokoto.left.png')
   .after
-    right 0
+    right 40px
     background-image url('../statics/hitokoto.right.png')
 
 .word
@@ -70,6 +67,7 @@ export default {
 
 .from
   position absolute
+  left 0
   width 100%
   padding 1rem 0
   z-index 1

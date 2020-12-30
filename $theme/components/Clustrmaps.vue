@@ -1,10 +1,5 @@
 <template>
-  <j-container
-    title="Clustrmaps"
-    icon="fas fa-map-marked-alt fa-fw"
-    disabled
-    hide-extend-icon
-  >
+  <j-container title="Clustrmaps" disabled hide-extend-icon>
     <div class="Clustrmaps">
       <script
         v-if="isIt"

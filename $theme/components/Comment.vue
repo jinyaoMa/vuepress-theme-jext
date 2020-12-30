@@ -1,10 +1,5 @@
 <template>
-  <j-container
-    :title="j$Locale.comment"
-    icon="fas fa-comments fa-fw"
-    disabled
-    hide-extend-icon
-  >
+  <j-container :title="j$Locale.comment" disabled hide-extend-icon>
     <div class="Comment">
       <CommentPlugin
         :title="$title"

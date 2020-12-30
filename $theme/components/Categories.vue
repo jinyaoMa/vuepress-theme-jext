@@ -1,10 +1,5 @@
 <template>
-  <j-container
-    :title="j$Locale.category"
-    icon="fas fa-folder-open fa-fw"
-    disabled
-    hide-extend-icon
-  >
+  <j-container :title="j$Locale.category" disabled hide-extend-icon>
     <j-counter-list
       class="Categories"
       :options="CateOptions"

@@ -18,6 +18,8 @@ module.exports = {
   hitokoto: "Hitokoto",
   comment: "Comment",
   recentPosts: "Recent Posts",
+  more: "Load More",
+  timeline: "Post Archive",
 
   unit: {
     post: {

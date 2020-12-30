@@ -40,7 +40,7 @@ module.exports = {
     ],
     navMenu: [],
     blogMenu: [],
-    recentPostOffset: 5, // number of recent posts each time click on 'more post'
+    recentPostOffset: 3, // number of recent posts each time click on 'more post'
     // clustrmaps setting
     clustrmaps: {
       id: "clustrmaps", // clstr_globe / clustrmaps
