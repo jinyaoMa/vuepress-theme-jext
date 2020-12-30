@@ -271,7 +271,8 @@ module.exports = (themeConfig, context) => {
 
     // extract cover
     if (_strippedContent && typeof frontmatter.cover === "undefined") {
-      const matches = content.match(/\!\[[^\]]*\]\(\s*([^\)]+)\s*\)/) || [];
+      const matches =
+        _strippedContent.match(/\!\[[^\]]*\]\(\s*([^\)]+)\s*\)/) || [];
       if (matches.length > 1) {
         frontmatter.cover = matches[1].replace(/\s+['"][^'"]+['"]$/, "");
       }
