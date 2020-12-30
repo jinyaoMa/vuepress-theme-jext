@@ -46,6 +46,26 @@ module.exports = {
       src:
         "//cdn.clustrmaps.com/map_v2.js?cl=333333&w=a&t=t&d=kuCCiVvtASTqmAMxPSTLcjxs-p8j6ht3LUi9z9Q-OKc&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=333333"
     },
+    comment: {
+      // https://vuepress-plugin-blog.ulivz.com/guide/getting-started.html#comment
+      service: "vssue",
+      owner: "jinyaoMa",
+      repo: "vuepress-theme-jext",
+      prefix: "[Blog Comment]: ",
+      labels: [":point_right:Blog_Comment:point_left:"],
+      clientId: "2da9973c24e3d7e3430a",
+      clientSecret: "050434610d8f2b9a907fdb1f9b97cb672b2a7b8a"
+    },
+    hitokoto: {
+      enable: true,
+      customs: [
+        /*{ // format; if customs exist, API will be ignored, and customs will be in use
+                word: 'https://developer.hitokoto.cn',
+                from: '一言开发者中心'
+              }*/
+      ],
+      type: "i" // https://developer.hitokoto.cn/sentence/#请求参数
+    },
     gallery: [
       /*{ format; these gallery items will be appended to /gallery/ page
             name: 'test image from baidu',

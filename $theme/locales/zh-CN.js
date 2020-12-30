@@ -16,6 +16,8 @@ module.exports = {
   default: "默认",
   black: "黑色",
   hitokoto: "一言",
+  comment: "评论 & 留言 & 骚话",
+  recentPosts: "近期文章",
 
   unit: {
     post: {

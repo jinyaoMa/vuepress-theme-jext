@@ -9,6 +9,7 @@ import Panel from "./Panel";
 import SkinPanel from "./SkinPanel";
 import CounterList from "./CounterList";
 import CloudList from "./CloudList";
+import PostCard from "./PostCard";
 
 const components = {
   Layout,
@@ -19,7 +20,8 @@ const components = {
   Panel,
   SkinPanel,
   CounterList,
-  CloudList
+  CloudList,
+  PostCard
 };
 
 const install = function(Vue) {

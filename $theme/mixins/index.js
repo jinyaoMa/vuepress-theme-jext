@@ -37,19 +37,19 @@ export default (Vuex) => {
       j$InitHitokoto() {
         let that = this;
         if (
-          that.$themeConfig.hitokoto.customs &&
-          that.$themeConfig.hitokoto.customs.length
+          that.$themeConfig._j$Blog.hitokoto.customs &&
+          that.$themeConfig._j$Blog.hitokoto.customs.length
         ) {
           const rand = Math.floor(
-            Math.random() * that.$themeConfig.hitokoto.customs.length
+            Math.random() * that.$themeConfig._j$Blog.hitokoto.customs.length
           );
           that.j$Hitokoto.word = customs[rand].word;
           that.j$Hitokoto.from = customs[rand].from;
         } else {
           axios
-            .get(that.$themeConfig.hitokoto.api, {
+            .get(that.$themeConfig._j$Blog.hitokoto.api, {
               params: {
-                c: that.$themeConfig.hitokoto.type
+                c: that.$themeConfig._j$Blog.hitokoto.type
               }
             })
             .then((result) => {

@@ -124,6 +124,11 @@ module.exports = (themeConfig, context) => {
         color: "#ffffff"
       }
     ],
+    hitokoto: {
+      api: "//v1.hitokoto.cn",
+      type: "l", // https://developer.hitokoto.cn/sentence/#请求参数
+      ...(typeof themeConfig.hitokoto === "object" ? themeConfig.hitokoto : {})
+    },
     gallery: [
       ...gallery.list,
       ...(themeConfig.gallery instanceof Array ? themeConfig.gallery : [])
@@ -170,7 +175,15 @@ module.exports = (themeConfig, context) => {
         ],
         sitemap: {
           hostname: "https://ma-jinyao.cn"
-        }
+        },
+        comment:
+          themeConfig.comment /* { // https://vuepress-plugin-blog.ulivz.com/guide/getting-started.html#comment
+          service: 'vssue',
+          owner: 'You',
+          repo: 'Your repo',
+          clientId: 'Your clientId',
+          clientSecret: 'Your clientSecret',
+        }*/
       }
     ],
     [
@@ -254,6 +267,14 @@ module.exports = (themeConfig, context) => {
     } else {
       frontmatter.wordcount = 0;
       frontmatter.min2read = 0;
+    }
+
+    // extract cover
+    if (_strippedContent && typeof frontmatter.cover === "undefined") {
+      const matches = content.match(/\!\[[^\]]*\]\(\s*([^\)]+)\s*\)/) || [];
+      if (matches.length > 1) {
+        frontmatter.cover = matches[1].replace(/\s+['"][^'"]+['"]$/, "");
+      }
     }
   };
 

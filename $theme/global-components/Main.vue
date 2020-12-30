@@ -1,19 +1,29 @@
 <template>
   <div class="Main flex flex-vertical">
-    <transition-group name="fade">
-      <Hitokoto v-if="layout === 'Home'" key="hitokoto"></Hitokoto>
+    <transition-group name="fade" tag="div">
+      <Hitokoto
+        v-if="
+          $themeConfig.hitokoto &&
+          $themeConfig.hitokoto.enable &&
+          layout === 'Home'
+        "
+        key="hitokoto"
+      ></Hitokoto>
       <slot></slot>
+      <Comment v-if="$frontmatter.comment !== false" key="comment"></Comment>
     </transition-group>
   </div>
 </template>
 
 <script>
 import Hitokoto from "../components/Hitokoto";
+import Comment from "../components/Comment";
 
 export default {
   name: "Main",
   components: {
     Hitokoto,
+    Comment,
   },
   props: {
     layout: {
@@ -28,6 +38,6 @@ export default {
 
 <style lang="stylus" scoped>
 .Main
-  > .j-container:not(:first-child)
+  > div > .j-container:not(:first-child)
     margin-top 40px
 </style>

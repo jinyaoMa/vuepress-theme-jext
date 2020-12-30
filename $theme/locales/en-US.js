@@ -16,6 +16,8 @@ module.exports = {
   default: "Default",
   black: "Black",
   hitokoto: "Hitokoto",
+  comment: "Comment",
+  recentPosts: "Recent Posts",
 
   unit: {
     post: {
