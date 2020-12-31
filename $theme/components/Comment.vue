@@ -24,7 +24,7 @@ export default {
 
 <style lang="stylus" scoped>
 .Comment
-  padding 60px
+  padding 40px
 
 >>> .vssue
   .vssue-comment-avatar

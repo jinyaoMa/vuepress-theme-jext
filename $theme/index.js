@@ -36,7 +36,7 @@ const generateGallery = (context) => {
           layout: "Layout",
           title: `${zhCN.gallery} | ${enUS.gallery}`,
           gallery: {
-            enabled: true
+            enable: true
           }
         }
       };
