@@ -5,7 +5,7 @@
         v-if="
           $themeConfig.hitokoto &&
           $themeConfig.hitokoto.enable &&
-          layout === 'Home'
+          (layout === 'Home' || layout === 'NotFound')
         "
         key="hitokoto"
       ></Hitokoto>

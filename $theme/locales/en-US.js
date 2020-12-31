@@ -21,6 +21,9 @@ module.exports = {
   more: "Load More",
   timeline: "Post Archive",
   portal: "Portal",
+  yearTotal: "have [:total:] posts written this year",
+  notFound: "Page <span>[:path:]</span> not found.",
+  post: "Post",
 
   unit: {
     post: {
@@ -45,7 +48,5 @@ module.exports = {
     wd: "Site total word count",
     license:
       "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License"
-  },
-
-  yearTotal: "have [:total:] posts written this year"
+  }
 };

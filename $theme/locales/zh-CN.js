@@ -21,6 +21,10 @@ module.exports = {
   more: "加载更多",
   timeline: "文章档案",
   portal: "传送门",
+  yearTotal: "共写有 [:total:] 篇文章",
+  notFound:
+    "找不到页面 <span>[:path:]</span> 了，或许本来就没有 <span>๑乛◡乛๑</span>",
+  post: "文章",
 
   unit: {
     post: {
@@ -44,7 +48,5 @@ module.exports = {
     uv: "本站总访客量",
     wd: "本站文章总字数",
     license: "知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议"
-  },
-
-  yearTotal: "共写有 [:total:] 篇文章"
+  }
 };

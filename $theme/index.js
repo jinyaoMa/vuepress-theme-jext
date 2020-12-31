@@ -295,7 +295,7 @@ module.exports = (themeConfig, context) => {
   };
 
   const extendMarkdown = (md) => {
-    md.use(require("markdown-it-footnote")); //.use(require("markdown-it-pangu"));
+    md.use(require("markdown-it-footnote"));
   };
 
   return {

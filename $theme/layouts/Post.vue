@@ -1,5 +1,8 @@
 <template>
-  <div class="Post"></div>
+  <div class="Post">
+    <j-container :title="j$Locale.post" disabled hide-extend-icon>
+    </j-container>
+  </div>
 </template>
 
 <script>
