@@ -193,6 +193,17 @@ module.exports = (themeConfig, context) => {
     [
       // https://vuepress.vuejs.org/plugin/official/plugin-nprogress.html#install
       "@vuepress/nprogress"
+    ],
+    [
+      // https://sns.goyfe.com/guide/
+      "vuepress-plugin-social-share",
+      themeConfig.socialShare /*{
+        networks: ['qq', 'weibo', 'douban', 'email', 'whatsapp', 'twitter', 'facebook', 'reddit', 'telegram', 'line'],
+        email: 'jinyao.ma@outlook.com',
+        fallbackImage: '/social-share.png',
+        autoQuote: true,
+        isPlain: true
+      }*/
     ]
   ];
 

@@ -69,12 +69,20 @@
               'flex-horizontal': column === 3,
               'flex-vertical': column !== 3,
             }"
+            :style="{
+              width:
+                column !== 1 &&
+                `calc(100% - ${drawer.width || '300px'} - ${gap} * 2)`,
+            }"
           >
             <div
               class="j-layout-main flex-fill"
               :style="{
                 paddingRight: column !== 3 && gap,
                 paddingLeft: column === 1 && gap,
+                width:
+                  column === 3 &&
+                  `calc(100% - ${aside.width || '300px'} - ${gap} * 2)`,
               }"
             >
               <div

@@ -26,6 +26,30 @@ module.exports = {
     "找不到页面 <span>[:path:]</span> 了，或许本来就没有 <span>๑乛◡乛๑</span>",
   post: "文章",
 
+  article: {
+    minuteUnit: "[:time:] 分钟",
+    ending: {
+      left: "以上文章结束",
+      right: "感谢您的阅读"
+    },
+    friend: {
+      text: "请多多留言，您的建议将大大提升我的创作质量！",
+      button: "加我好友"
+    },
+    license: {
+      author: "本文作者:",
+      link: "本文链接:",
+      copyright: "版权声明:",
+      notice: {
+        name: '<i class="fab fa-creative-commons"></i> BY-NC-SA',
+        text:
+          "本站所有文章除特别声明外，均采用 [:license:] 许可协议。转载请注明出处！"
+      }
+    },
+    prev: "上一篇: ",
+    next: "下一篇: "
+  },
+
   unit: {
     post: {
       0: "文章",

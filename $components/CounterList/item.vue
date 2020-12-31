@@ -1,5 +1,10 @@
 <template>
-  <ul v-if="Object.keys(options).length > 0">
+  <ul
+    v-if="Object.keys(options).length > 0"
+    :class="{
+      'flex flex-horizontal flex-wrap': flat,
+    }"
+  >
     <li v-for="(item, name) in options" :key="name">
       <div
         class="j-counter-list-item"
@@ -47,6 +52,12 @@ export default {
     countColor: {
       type: String,
       required: true,
+    },
+    flat: {
+      type: Boolean,
+      default() {
+        return false;
+      },
     },
   },
 };
