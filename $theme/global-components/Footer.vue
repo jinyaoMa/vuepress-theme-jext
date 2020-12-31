@@ -6,7 +6,7 @@
     }"
   >
     <div
-      class="info flex flex-vertical flex-fill"
+      class="info flex flex-vertical"
       :style="{
         paddingRight: gap,
       }"
@@ -30,14 +30,35 @@
       </div>
       <div class="license flex" v-html="license"></div>
     </div>
-    <div class="flex flex-horizontal flex-wrap">
+    <div
+      class="flex flex-horizontal flex-wrap"
+      :style="{
+        paddingRight: gap,
+      }"
+    >
       <div
         class="qrcode flex flex-vertical"
         v-for="(qrcode, i) in $themeConfig.qrcodes || []"
         :key="i"
+        :style="{
+          marginLeft: i !== 0 && gap,
+        }"
       >
         <div v-html="qrcode.text[j$Lang]"></div>
         <img :src="qrcode.image" />
+      </div>
+    </div>
+    <div v-if="$themeConfig.portals" class="portal flex flex-vertical">
+      <div v-html="j$Locale.portal"></div>
+      <div class="flex flex-vertical flex-wrap">
+        <a
+          target="_blank"
+          v-for="(p, i) in $themeConfig.portals"
+          :key="i"
+          :href="p.link"
+          :title="p.text[j$Lang]"
+          v-html="p.text[j$Lang]"
+        ></a>
       </div>
     </div>
   </div>
@@ -102,6 +123,7 @@ export default {
 .Footer
   height 100%
   user-select none
+  justify-content space-between
   >>> a
     color #ff3300
     &:before
@@ -112,6 +134,20 @@ export default {
     margin 8px 0
   > div:last-child
     margin 8px 0 0
+
+.portal
+  margin-top 8px
+  > div:first-child
+    margin 8px 0
+  a
+    width fit-content
+    color #666666
+    opacity 0.8
+    transition opacity 0.2s
+    &:hover
+      opacity 1
+    &:before
+      display none
 
 .count
   margin-right 1em

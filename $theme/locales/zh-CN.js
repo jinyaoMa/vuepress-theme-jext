@@ -20,6 +20,7 @@ module.exports = {
   recentPosts: "近期文章",
   more: "加载更多",
   timeline: "文章档案",
+  portal: "传送门",
 
   unit: {
     post: {

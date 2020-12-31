@@ -74,6 +74,50 @@ module.exports = {
           }*/
     ],
     copyright: `© 2019 - ${new Date().getFullYear()} jinyaoMa`,
+    portals: [
+      {
+        text: {
+          zh: "博客 Hexo 版 (Mustom)",
+          en: "Blog ver. Hexo (Mustom)"
+        },
+        link: "https://jinyaoma.github.io/my-hexo-site/"
+      },
+      {
+        text: {
+          zh: "博客 VuePress 版 (Mustom)",
+          en: "Blog ver. VuePress (Mustom)"
+        },
+        link: "https://jinyaoma.github.io/vuepress-theme-mustom/"
+      },
+      {
+        text: {
+          zh: "耀 UI 模板",
+          en: "Yao UI Template"
+        },
+        link: "https://jinyaoma.github.io/yao-ui/"
+      },
+      {
+        text: {
+          zh: "主题色提取",
+          en: "Palette"
+        },
+        link: "https://jinyaoma.github.io/Palette/"
+      },
+      {
+        text: {
+          zh: "MPlayer",
+          en: "MPlayer"
+        },
+        link: "https://jinyaoma.github.io/MPlayer/"
+      },
+      {
+        text: {
+          zh: "求职信仓库",
+          en: "Cover Letter Library"
+        },
+        link: "https://jinyaoma.github.io/cover-letter-lib/"
+      }
+    ],
     qrcodes: [
       {
         text: {

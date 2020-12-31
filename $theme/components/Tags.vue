@@ -26,6 +26,7 @@ export default {
   font-size 0.8em
 
 >>> a
+  color #333333
   &:before
     display none
     bottom -2px

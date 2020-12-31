@@ -51,6 +51,7 @@ export default {
 
 <style lang="stylus" scoped>
 >>> a
+  color #333333
   &:before
     background-color #cc66ff
   &.router-link-exact-active:before

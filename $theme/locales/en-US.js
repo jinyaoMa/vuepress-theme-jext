@@ -20,6 +20,7 @@ module.exports = {
   recentPosts: "Recent Posts",
   more: "Load More",
   timeline: "Post Archive",
+  portal: "Portal",
 
   unit: {
     post: {

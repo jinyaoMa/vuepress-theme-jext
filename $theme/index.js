@@ -163,10 +163,6 @@ module.exports = (themeConfig, context) => {
             keys: ["category", "categories"],
             path: "/categories/",
             title: `${zhCN.category} | ${enUS.category}`,
-            frontmatter: {
-              title_zh: zhCN.category,
-              title_en: enUS.category
-            },
             scopeLayout: "Archive"
           },
           {
@@ -235,6 +231,17 @@ module.exports = (themeConfig, context) => {
       path // current page's real link (use regularPath when permalink does not exist)
     } = $page;
 
+    // add categories & tags title to pages
+    if (typeof regularPath === "string") {
+      if (regularPath.startsWith("/categories/")) {
+        frontmatter.title_zh = zhCN.category;
+        frontmatter.title_en = enUS.category;
+      } else if (regularPath.startsWith("/tags/")) {
+        frontmatter.title_zh = zhCN.tag;
+        frontmatter.title_en = enUS.tag;
+      }
+    }
+
     // change _posts link
     if (typeof regularPath === "string" && regularPath.startsWith("/_posts/")) {
       frontmatter.permalink = `/posts/${key.substr(2)}/`;
@@ -288,7 +295,7 @@ module.exports = (themeConfig, context) => {
   };
 
   const extendMarkdown = (md) => {
-    md.use(require("markdown-it-pangu"));
+    md.use(require("markdown-it-footnote")); //.use(require("markdown-it-pangu"));
   };
 
   return {
