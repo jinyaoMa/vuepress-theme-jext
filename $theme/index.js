@@ -195,6 +195,10 @@ module.exports = (themeConfig, context) => {
       "@vuepress/nprogress"
     ],
     [
+      // https://vuepress.github.io/zh/plugins/mathjax/
+      "vuepress-plugin-mathjax"
+    ],
+    [
       // https://sns.goyfe.com/guide/
       "vuepress-plugin-social-share",
       themeConfig.socialShare /*{
@@ -305,16 +309,11 @@ module.exports = (themeConfig, context) => {
     }
   };
 
-  const extendMarkdown = (md) => {
-    md.use(require("markdown-it-footnote"));
-  };
-
   return {
     name,
     plugins,
     define,
     additionalPages,
-    extendPageData,
-    extendMarkdown
+    extendPageData
   };
 };

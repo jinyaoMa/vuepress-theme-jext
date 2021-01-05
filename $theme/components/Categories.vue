@@ -2,7 +2,7 @@
   <j-container :title="j$Locale.category" disabled hide-extend-icon>
     <j-counter-list
       class="Categories"
-      :options="CateOptions"
+      :options="cateOptions"
       count-color="#00ccff"
     ></j-counter-list>
   </j-container>
@@ -12,7 +12,7 @@
 export default {
   name: "Categories",
   computed: {
-    CateOptions() {
+    cateOptions() {
       const result = {};
       for (const key in this.$category.map) {
         const item = this.$category.map[key];

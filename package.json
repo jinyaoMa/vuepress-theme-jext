@@ -30,15 +30,16 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@vuepress/plugin-blog": "^1.9.2",
     "axios": "^0.21.0",
-    "markdown-it-footnote": "^3.0.2",
     "md5": "^2.3.0",
     "vuepress": "^1.7.1",
+    "vuepress-plugin-mathjax": "^1.2.8",
     "vuepress-plugin-social-share": "^1.0.0",
     "vuex": "^3.5.1"
   },
   "devDependencies": {
     "@vue/cli-service": "~4.5.0",
     "font-carrier": "^0.2.0",
+    "markdown-it-footnote": "^3.0.2",
     "mini-css-extract-plugin": "^1.2.1"
   }
 }

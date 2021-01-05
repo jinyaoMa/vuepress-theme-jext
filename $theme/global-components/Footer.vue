@@ -6,7 +6,7 @@
     }"
   >
     <div
-      class="info flex flex-vertical"
+      class="info flex flex-vertical flex-fill"
       :style="{
         paddingRight: gap,
       }"
@@ -123,7 +123,6 @@ export default {
 .Footer
   height 100%
   user-select none
-  justify-content space-between
   >>> a
     color #ff3300
     &:before

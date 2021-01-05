@@ -5,7 +5,7 @@
         <div class="meta-title">
           {{ $page.title || $page.frontmatter.title }}
         </div>
-        <div class="meta-info">
+        <div class="meta-info flex flex-horizontal flex-wrap flex-">
           <div class="info-date">
             <i class="fas fa-calendar-alt fa-fw" />
             {{ $page.frontmatter.date.substr(0, 10) }}
@@ -16,13 +16,10 @@
           </div>
           <div class="info-categories">
             <i class="fas fa-folder-open fa-fw" />
-            <span
-              v-for="(cate, i) in $page.frontmatter.categories.flat(Infinity)"
-              :key="i"
-            >
-              <span v-if="i !== 0">&nbsp;,</span>
-              <router-link :to="$category.map[cate].path">{{
-                cate
+            <span v-for="(item, i) in categories" :key="i">
+              <span v-if="i !== 0">, </span>
+              <router-link :to="item.path" :title="item.name">{{
+                item.name
               }}</router-link>
             </span>
           </div>
@@ -53,7 +50,7 @@
               <a
                 target="_blank"
                 :href="$withBase('/')"
-                v-html="$themeConfig.author"
+                v-html="$themeConfig.license"
               ></a>
             </div>
             <div>
@@ -126,8 +123,15 @@ export default {
     license() {
       return this.j$Locale.article.license.notice.text.replace(
         "[:license:]",
-        `<a target="_blank" href="${CC_LICENSE_LINK}">${this.j$Locale.article.license.notice.name}</a>`
+        `<a target="_blank" href="${CC_LICENSE_LINK}" title="${this.j$Locale.footer.license}">${this.j$Locale.article.license.notice.name}</a>`
       );
+    },
+    categories() {
+      const result = [];
+      this.$page.frontmatter.categories.forEach((cates) => {
+        this.setCate(result, this.$category._metaMap, cates);
+      });
+      return result;
     },
   },
   methods: {
@@ -150,70 +154,94 @@ export default {
       }
       return num;
     },
+    setCate(cates, map, key, parent = "") {
+      if (typeof key === "string") {
+        cates.push({
+          name: key,
+          path: map[parent === "" ? key : `${parent},${key}`].path,
+        });
+      } else if (key instanceof Array && key.length > 0) {
+        const _parent = parent === "" ? key[0] : `${parent},${key[0]}`;
+        cates.push({
+          name: key[0],
+          path: map[_parent].path,
+        });
+        this.setCate(cates, map, key[1], _parent);
+      }
+    },
   },
 };
 </script>
 
 <style lang="stylus" scoped>
 .Post
-  max-width 100%
+  padding 60px
+
+.markdown-body
+  >>> a:before
+    display none
 
 .meta
   text-align center
-  margin-bottom 2rem
+  margin-bottom 60px
 
 .meta-title
-  font-size 3rem
-  line-height 1.5
-  padding-bottom 1rem
-  border-bottom 0.25rem solid #f1f2f3
+  font-size 3em
+  line-height 1.2
+  word-break break-word
 
 .meta-info
-  line-height 2
-  padding-top 0.5rem
-  user-select none
+  padding 1em 0
+  font-size 0.88em
+  justify-content center
   > div
     display inline-block
-    margin 0 0.5rem
+    opacity 0.6
+    transition opacity 0.2s
+    &:hover
+      opacity 1
+    &:not(:last-child)
+      margin-right 1em
 
 .tail
   user-select none
-  margin-top 2rem
+  margin-top 60px
 
 .ending
   color #e1e2e3
-  border-top 0.5rem dashed
+  border-top 0.5em dashed
   display grid
-  grid-template-columns auto 2rem auto
-  font-size 1.25rem
+  grid-template-columns auto 2em auto
+  font-size 1.25em
   justify-content center
   justify-items center
   line-height 2.5
-  padding 0 1rem
-  margin 0 -1rem
+  padding 0 60px
+  margin 0 -60px
   i
     line-height 2.5
 
 .share
   text-align center
+  margin 1em 0
 
 .license
   width 100%
   background #ff330011
   overflow-y hidden
   overflow-x auto
-  margin 1rem 0
-  font-size 0.95rem
+  margin 1em 0
+  font-size 0.95em
 
 >>> .frame
   line-height 2
-  padding 0.5rem 0.25rem 0.5rem 0.75rem
+  padding 0.5em 0.25em 0.5em 0.75em
   white-space nowrap
-  border-left 0.25rem solid #ff3300
+  border-left 0.25em solid #ff3300
   span
     display inline-block
     &:first-child
-      margin-right 0.25rem
+      margin-right 0.25em
       font-weight bold
 
 .tags
@@ -222,17 +250,17 @@ export default {
   flex-wrap wrap
   justify-content center
   line-height 1.5
-  margin-top 1.25rem
-  margin-bottom 1rem
+  margin-top 1.25em
+  margin-bottom 1em
   > a
-    margin 0.5rem
+    margin 0.5em
     margin-top 0
 
 .pn
   display grid
-  grid-template-columns repeat(2, calc(50% - 0.5rem))
+  grid-template-columns repeat(2, calc(50% - 0.5em))
   grid-template-areas 'prev next'
-  gap 1rem
+  gap 1em
   .prev
     grid-area prev
   .next
@@ -241,4 +269,21 @@ export default {
     &:before
       left auto
       right 0
+
+>>> div[class*='language-']
+  border-radius 0
+  margin 0 -60px
+  > pre
+    padding 1.5em 60px
+  &:before
+    top 0
+    right 0
+    text-align center
+    min-width 60px
+    padding 2px 0.5em
+    margin-right 60px
+    border-radius 0 0 4px 4px
+    background #00ccff99
+    color #ffffff
+    pointer-events none
 </style>

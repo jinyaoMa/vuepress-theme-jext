@@ -49,3 +49,11 @@ export default {
   },
 };
 </script>
+
+<style lang="stylus">
+.markdown-body blockquote, .markdown-body dl, .markdown-body ol, .markdown-body p, .markdown-body pre, .markdown-body table, .markdown-body ul
+  margin-bottom 1.5em
+
+a.header-anchor
+  text-decoration none !important
+</style>

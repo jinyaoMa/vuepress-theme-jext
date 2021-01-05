@@ -90,6 +90,7 @@ module.exports = {
       fallbackImage: "/assets/img/avatar.png",
       noGlobalSocialShare: true
     },
+    license: "jinyaoMa",
     copyright: `© 2019 - ${new Date().getFullYear()} jinyaoMa`,
     portals: [
       {
@@ -160,5 +161,12 @@ module.exports = {
     ]
   },
 
-  evergreen: true // using old browser ?
+  evergreen: true, // using old browser ?
+
+  markdown: {
+    extendMarkdown: (md) => {
+      md.set({ breaks: true });
+      md.use(require("markdown-it-footnote"));
+    }
+  }
 };
