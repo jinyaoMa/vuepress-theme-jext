@@ -1,5 +1,6 @@
 <template>
   <div class="Aside flex flex-vertical">
+    <Toc v-if="$page.id === 'post'"></Toc>
     <Categories></Categories>
     <Tags></Tags>
     <Clustrmaps></Clustrmaps>
@@ -10,6 +11,7 @@
 import Categories from "../components/Categories";
 import Tags from "../components/Tags";
 import Clustrmaps from "../components/Clustrmaps";
+import Toc from "../components/Toc";
 
 export default {
   name: "Aside",
@@ -17,6 +19,7 @@ export default {
     Categories,
     Tags,
     Clustrmaps,
+    Toc,
   },
 };
 </script>

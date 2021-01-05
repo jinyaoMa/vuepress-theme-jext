@@ -24,6 +24,7 @@ module.exports = {
   yearTotal: "have [:total:] posts written this year",
   notFound: "Page <span>[:path:]</span> not found.",
   post: "Post",
+  toc: "Table of Content",
 
   article: {
     minuteUnit: "[:time:] min.",

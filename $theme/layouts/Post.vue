@@ -14,7 +14,7 @@
             <i class="fas fa-calendar-check fa-fw" />
             {{ $page.frontmatter.updated.substr(0, 10) }}
           </div>
-          <div class="info-categories">
+          <div class="info-categories" v-if="$page.frontmatter.categories">
             <i class="fas fa-folder-open fa-fw" />
             <span v-for="(item, i) in categories" :key="i">
               <span v-if="i !== 0">, </span>
@@ -63,7 +63,7 @@
             </div>
           </div>
         </div>
-        <div class="tags">
+        <div class="tags" v-if="$page.frontmatter.tags">
           <router-link
             v-for="(tag, i) in $page.frontmatter.tags.flat(Infinity)"
             :key="i"
@@ -72,7 +72,7 @@
             # {{ tag }}
           </router-link>
         </div>
-        <div class="pn">
+        <div class="pn" v-if="!$page.frontmatter.extract">
           <router-link
             class="prev"
             v-if="prevIndex >= 0"
@@ -128,9 +128,11 @@ export default {
     },
     categories() {
       const result = [];
-      this.$page.frontmatter.categories.forEach((cates) => {
-        this.setCate(result, this.$category._metaMap, cates);
-      });
+      if (this.$page.frontmatter.categories) {
+        this.$page.frontmatter.categories.forEach((cates) => {
+          this.setCate(result, this.$category._metaMap, cates);
+        });
+      }
       return result;
     },
   },
