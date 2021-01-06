@@ -1,5 +1,12 @@
 <template>
-  <j-container :title="j$Locale.hitokoto" disabled hide-extend-icon>
+  <j-container
+    :title="j$Locale.hitokoto"
+    disabled
+    hide-extend-icon
+    :style="{
+      paddingBottom: 0,
+    }"
+  >
     <div class="Hitokoto">
       <div class="before"></div>
       <div class="word" v-html="j$Hitokoto.word"></div>

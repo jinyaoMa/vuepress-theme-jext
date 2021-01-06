@@ -18,4 +18,23 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+.Toc
+  margin 0
+  padding 0
+  list-style-type none
+  li
+    cursor pointer
+    padding-left 20px
+    padding-right 4px
+    white-space nowrap
+    text-overflow ellipsis
+    overflow hidden
+    line-height 2
+    &:hover
+      transition color 0.2s
+      color #cc66ff
+    &.router-link-exact-active
+      color #cc66ff
+      border-left 10px solid
+</style>

@@ -164,6 +164,7 @@ module.exports = {
   evergreen: true, // using old browser ?
 
   markdown: {
+    extractHeaders: ["h1", "h2", "h3", "h4", "h5", "h6"],
     extendMarkdown: (md) => {
       md.set({ breaks: true });
       md.use(require("markdown-it-footnote"));

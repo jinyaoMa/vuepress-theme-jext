@@ -391,6 +391,7 @@ export default {
       this.thumbTransfrom =
         (this.$refs.frame.scrollTop / this.thumbDistance) *
         this.limitThumbTranslate;
+      this.$emit("scroll", this.$refs.frame);
     },
     goingtoTop() {
       this.$refs.frame.scrollTo({

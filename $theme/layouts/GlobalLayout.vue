@@ -10,6 +10,7 @@
       :scrollbar="{
         color: '#333',
       }"
+      @scroll="handleScroll"
     >
       <Header slot="header"></Header>
       <Footer slot="footer"></Footer>
@@ -41,12 +42,58 @@ export default {
       }
       return "NotFound";
     },
+    headerOffsets() {
+      const result = [];
+      if (this.$page.headers && typeof document === "object") {
+        this.$page.headers.forEach((h) => {
+          const hash = "#" + h.slug;
+          const el = document.querySelector(hash);
+          if (el) {
+            result.push({
+              hash,
+              el,
+              offset: el.offsetTop || 0,
+            });
+          }
+        });
+      }
+      return result;
+    },
+  },
+  methods: {
+    handleScroll(frame) {
+      if (this.headerOffsets.length === 0) return;
+      let index = 0;
+      this.headerOffsets.forEach((h, i) => {
+        if (frame.scrollTop > h.offset) {
+          index = i;
+        }
+      });
+      if (this.$route.hash !== this.headerOffsets[index].hash) {
+        window.clearTimeout(this.scrollWaiter);
+        this.scrollWaiter = window.setTimeout(() => {
+          this.$vuepress.$set("disableScrollBehavior", true);
+          this.$router.replace(
+            {
+              hash: this.headerOffsets[index].hash,
+            },
+            () => {
+              this.$nextTick(() => {
+                this.$vuepress.$set("disableScrollBehavior", false);
+              });
+            }
+          );
+        }, 1000);
+      }
+    },
   },
   data() {
     return {
       layoutColumn: 3,
+      scrollWaiter: null,
     };
   },
+  mounted() {},
 };
 </script>
 
