@@ -4,14 +4,14 @@
 set -e
 
 # build
-#npm run icons:dev
-#npm run vuepress:build
+npm run icons:dev
+npm run vuepress:build
 
 # navigate into the build output directory
 cd "\$_docs/.vuepress/dist"
 
 # if you are deploying to a custom domain
-#echo 'ma-jinyao.cn' >CNAME
+echo 'j.ma-jinyao.cn' >CNAME
 
 git init
 git add -A
