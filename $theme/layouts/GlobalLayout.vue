@@ -98,8 +98,18 @@ export default {
 </script>
 
 <style lang="stylus">
-.markdown-body blockquote, .markdown-body dl, .markdown-body ol, .markdown-body p, .markdown-body pre, .markdown-body table, .markdown-body ul
-  margin-bottom 1.5em
+.markdown-body
+  blockquote, dl, ol, p, pre, table, ul
+    margin-bottom 1.5em
+  img
+    display block
+    + em
+      display block
+      font-size 0.88em
+      line-height 2
+      padding 4px 1em
+      color #24292e
+      background #f1f2f3
 
 a.header-anchor
   text-decoration none !important

@@ -1,8 +1,8 @@
 <template>
   <div class="Aside flex flex-vertical">
-    <Toc v-if="$page.id === 'post'"></Toc>
-    <Categories></Categories>
-    <Tags></Tags>
+    <Toc v-if="$page.id === 'post' || $frontmatter.isNotBlog"></Toc>
+    <Categories v-if="!$frontmatter.isNotBlog"></Categories>
+    <Tags v-if="!$frontmatter.isNotBlog"></Tags>
     <Clustrmaps></Clustrmaps>
   </div>
 </template>

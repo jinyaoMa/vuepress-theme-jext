@@ -45,10 +45,35 @@ const generateGallery = (context) => {
   return result;
 };
 
+const extraNavMenuFolders = () => {
+  let result = [];
+  let projectPath = "./";
+  const regex = /^(\.vuepress|\_posts)$/i;
+  if (process.argv.length === 4 && /(dev|build)/.test(process.argv[2])) {
+    const projectName = process.argv[3];
+    projectPath = path.resolve(process.cwd(), projectName);
+  } else if (process.argv.length === 3 && /(dev|build)/.test(process.argv[2])) {
+    projectPath = path.resolve(process.cwd());
+  }
+  if (fs.existsSync(projectPath) && fs.statSync(projectPath).isDirectory()) {
+    const ls = fs.readdirSync(projectPath);
+    if (ls && ls.length) {
+      ls.forEach((filename) => {
+        if (!regex.test(filename)) {
+          result.push(`/${filename}/`);
+        }
+      });
+    }
+  }
+  return result;
+};
+
 module.exports = (themeConfig, context) => {
   const name = "@jinyaoma/vuepress-theme-jext";
 
   const gallery = generateGallery(context);
+
+  const navMenuFolders = extraNavMenuFolders();
 
   themeConfig._j$Blog = {
     links: {
@@ -132,7 +157,8 @@ module.exports = (themeConfig, context) => {
     gallery: [
       ...gallery.list,
       ...(themeConfig.gallery instanceof Array ? themeConfig.gallery : [])
-    ]
+    ],
+    sidebar: []
   };
 
   const plugins = [
@@ -278,7 +304,9 @@ module.exports = (themeConfig, context) => {
     if (_strippedContent) {
       const pangunode = require("./scripts/pangunode");
       frontmatter.title = $page.title = pangunode($page.title || "");
-      $page.excerpt = pangunode($page.excerpt.replace(/<img[^>]*>/g, "") || "");
+      $page.excerpt = pangunode(
+        $page.excerpt ? $page.excerpt.replace(/<img[^>]*>/g, "") : ""
+      );
     }
 
     // word count && read time
@@ -305,6 +333,43 @@ module.exports = (themeConfig, context) => {
         _strippedContent.match(/\!\[[^\]]*\]\(\s*([^\)]+)\s*\)/) || [];
       if (matches.length > 1) {
         frontmatter.cover = matches[1].replace(/\s+['"][^'"]+['"]$/, "");
+      }
+    }
+
+    // add links to nav menu
+    if (typeof regularPath === "string") {
+      if (navMenuFolders.includes(regularPath)) {
+        themeConfig._j$Blog.navMenu.push({
+          text: {
+            zh: frontmatter.title_zh,
+            en: frontmatter.title_en
+          },
+          icon: frontmatter.icon || false,
+          to: path
+        });
+      }
+      if (_filePath && !/(\.vuepress|\_posts)/i.test(_filePath)) {
+        if (regularPath.endsWith(".html")) {
+          themeConfig._j$Blog.sidebar.push({
+            text: {
+              zh: frontmatter.title,
+              en: frontmatter.title
+            },
+            to: path
+          });
+        } else {
+          themeConfig._j$Blog.sidebar.push({
+            isEmpty: (_strippedContent || "").trim() === "",
+            isRoot: true,
+            text: {
+              zh: frontmatter.title_zh,
+              en: frontmatter.title_en
+            },
+            to: path
+          });
+        }
+        frontmatter.isNotBlog = true;
+        frontmatter.lastUpdated = fs.statSync(_filePath).mtime;
       }
     }
   };

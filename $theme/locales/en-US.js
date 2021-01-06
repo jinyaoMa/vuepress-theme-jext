@@ -25,6 +25,7 @@ module.exports = {
   notFound: "Page <span>[:path:]</span> not found.",
   post: "Post",
   toc: "Table of Content",
+  page: "Page",
 
   article: {
     minuteUnit: "[:time:] min.",

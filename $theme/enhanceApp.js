@@ -19,19 +19,22 @@ export default ({ Vue, options, router, siteData }) => {
    * Another: https://github.com/vuejs/vue-router/blob/dev/examples/scroll-behavior/app.js
    */
   router.options.scrollBehavior = function(to, from, savedPosition) {
-    if (Vue.$vuepress.$get("disableScrollBehavior")) {
-      return false;
-    }
     if (!document || !document.querySelector(".j-layout-frame")) return false;
     const frame = document.querySelector(".j-layout-frame");
     if (to.hash) {
+      if (Vue.$vuepress.$get("disableScrollBehavior")) {
+        return false;
+      }
       if (!document.querySelector(to.hash)) return false;
       const hash = document.querySelector(to.hash);
       return frame.scrollTo({
         top: hash.offsetTop
       });
     } else {
-      return false;
+      return frame.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     }
   };
 };

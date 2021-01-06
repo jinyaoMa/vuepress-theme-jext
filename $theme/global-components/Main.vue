@@ -1,17 +1,15 @@
 <template>
   <div class="Main flex flex-vertical">
-    <transition-group name="fade" tag="div">
-      <Hitokoto
-        v-if="
-          $themeConfig.hitokoto &&
-          $themeConfig.hitokoto.enable &&
-          (layout === 'Home' || layout === 'NotFound')
-        "
-        key="hitokoto"
-      ></Hitokoto>
-      <slot></slot>
-      <Comment v-if="$frontmatter.comment !== false" key="comment"></Comment>
-    </transition-group>
+    <Hitokoto
+      v-if="
+        $themeConfig.hitokoto &&
+        $themeConfig.hitokoto.enable &&
+        (layout === 'Home' || layout === 'NotFound')
+      "
+      key="hitokoto"
+    ></Hitokoto>
+    <slot></slot>
+    <Comment v-if="$frontmatter.comment !== false" key="comment"></Comment>
   </div>
 </template>
 

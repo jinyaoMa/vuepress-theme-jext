@@ -26,6 +26,7 @@ module.exports = {
     "找不到页面 <span>[:path:]</span> 了，或许本来就没有 <span>๑乛◡乛๑</span>",
   post: "文章",
   toc: "目录",
+  page: "页面",
 
   article: {
     minuteUnit: "[:time:] 分钟",

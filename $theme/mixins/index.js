@@ -130,6 +130,13 @@ export default (Vuex) => {
             }
             return 0;
           });
+      },
+      j$Sidebar() {
+        return function(path) {
+          return this.$themeConfig._j$Blog.sidebar
+            .filter((item) => item.to.startsWith(path))
+            .sort((a, b) => a.to.localeCompare(b.to));
+        };
       }
     }
   };

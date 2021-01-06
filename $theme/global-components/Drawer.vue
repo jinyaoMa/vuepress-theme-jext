@@ -1,7 +1,8 @@
 <template>
   <div class="Drawer flex flex-vertical">
+    <Sidebar v-if="$frontmatter.isNotBlog"></Sidebar>
     <Brand></Brand>
-    <BlogMenu></BlogMenu>
+    <BlogMenu v-if="!$frontmatter.isNotBlog"></BlogMenu>
     <Skin></Skin>
     <Settings></Settings>
   </div>
@@ -12,6 +13,7 @@ import Brand from "../components/Brand";
 import BlogMenu from "../components/BlogMenu";
 import Settings from "../components/Settings";
 import Skin from "../components/Skin";
+import Sidebar from "../components/Sidebar";
 
 export default {
   name: "Drawer",
@@ -20,6 +22,7 @@ export default {
     BlogMenu,
     Settings,
     Skin,
+    Sidebar,
   },
 };
 </script>
