@@ -1,5 +1,5 @@
 <template>
-  <j-container :title="j$Locale.page" disabled hide-extend-icon>
+  <j-container hide-title :title="j$Locale.page" disabled hide-extend-icon>
     <div class="Page">
       <div class="meta">
         <div class="meta-title">

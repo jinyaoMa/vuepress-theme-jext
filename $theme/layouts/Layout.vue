@@ -22,6 +22,5 @@ export default {
 
 <style lang="stylus" scoped>
 .Layout
-  > .j-container:not(:first-child)
-    margin-top 40px
+  margin-bottom 40px
 </style>
