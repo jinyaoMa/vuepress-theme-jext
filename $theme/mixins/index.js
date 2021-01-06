@@ -1,5 +1,6 @@
 import jsonp from "../utils/jsonp";
 import axios from "axios";
+import _skins from "../utils/skins";
 
 export default (Vuex) => {
   return {
@@ -12,13 +13,15 @@ export default (Vuex) => {
         j$Hitokoto: {
           word: "Loading...",
           from: "Loading..."
-        }
+        },
+        j$SkinConfig: _skins
       };
     },
     methods: {
       ...Vuex.mapActions({
         j$SwapLang: "swapLang",
-        j$Nightshift: "nightshift"
+        j$Nightshift: "nightshift",
+        j$SetSkin: "setSkin"
       }),
       j$InitBusuanzi() {
         jsonp(
@@ -79,7 +82,8 @@ export default (Vuex) => {
       ...Vuex.mapGetters({
         j$Lang: "lang",
         j$Locale: "locale",
-        j$IsNight: "isNight"
+        j$IsNight: "isNight",
+        j$Skin: "skin"
       }),
       j$SiteTotalWords() {
         let result = 0;

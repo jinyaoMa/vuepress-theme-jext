@@ -27,6 +27,7 @@ export default {
   methods: {
     handleClick(option) {
       this.activeOption = option;
+      this.j$SetSkin(this.activeOption);
     },
   },
 };

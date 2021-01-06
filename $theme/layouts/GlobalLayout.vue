@@ -1,8 +1,13 @@
 <template>
-  <div class="GlobalLayout">
+  <div
+    class="GlobalLayout"
+    :style="{
+      filter: j$IsNight ? 'brightness(0.5)' : 'brightness(1)',
+    }"
+  >
     <j-layout
       :column="layoutColumn"
-      background-image="linear-gradient(120deg, #ff3300, #cc66ff, #00ccff)"
+      :background-image="backgroundImage"
       :scroll-control="{
         color: '#ffffff',
         backgroundColor: '#666666ff',
@@ -59,6 +64,9 @@ export default {
       }
       return result;
     },
+    backgroundImage() {
+      return this.j$SkinConfig[this.j$Skin].backgroundImage;
+    },
   },
   methods: {
     handleScroll(frame) {
@@ -86,6 +94,15 @@ export default {
         }, 1000);
       }
     },
+    onResize() {
+      if (window.innerWidth > 1414) {
+        this.layoutColumn = 3;
+      } else if (window.innerWidth > 1024) {
+        this.layoutColumn = 2;
+      } else if (window.innerWidth > 320) {
+        this.layoutColumn = 1;
+      }
+    },
   },
   data() {
     return {
@@ -93,11 +110,20 @@ export default {
       scrollWaiter: null,
     };
   },
-  mounted() {},
+  mounted() {
+    this.onResize();
+    window && window.addEventListener("resize", this.onResize);
+  },
+  destroyed() {
+    window && window.removeEventListener("resize", this.onResize);
+  },
 };
 </script>
 
 <style lang="stylus">
+.GlobalLayout
+  transition filter 0.6s
+
 .markdown-body
   blockquote, dl, ol, p, pre, table, ul
     margin-bottom 1.5em

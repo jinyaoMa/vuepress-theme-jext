@@ -2,18 +2,18 @@
   <div
     class="j-layout flex flex-vertical background-image-fix"
     :style="{
-      height: column !== 1 && height,
+      height: column !== 1 ? height : '',
+      background: backgroundImage,
       backgroundColor,
-      backgroundImage,
-      overflowY: column === 1 && 'auto',
+      overflowY: column === 1 ? 'auto' : '',
     }"
   >
     <slot name="background"></slot>
     <div
       class="j-layout-header background-image-fix"
       :style="{
-        height: column !== 1 && (header.height || '80px'),
-        minHeight: column === 1 && (header.height || '80px'),
+        height: column !== 1 ? header.height || '80px' : '',
+        minHeight: column === 1 ? header.height || '80px' : '',
         backgroundColor: header.backgroundColor || '#ffffff',
         backgroundImage: header.backgroundImage || '',
         paddingLeft: gap,
@@ -33,7 +33,7 @@
         class="j-layout-frame flex flex-vertical"
         ref="frame"
         :style="{
-          height: column !== 1 && '100%',
+          height: column !== 1 ? '100%' : '',
         }"
       >
         <div
@@ -47,7 +47,9 @@
             class="j-layout-drawer"
             :style="{
               width:
-                column !== 1 && `calc(${drawer.width || '300px'} + ${gap} * 2)`,
+                column !== 1
+                  ? `calc(${drawer.width || '300px'} + ${gap} * 2)`
+                  : '',
               paddingLeft: gap,
               paddingRight: gap,
             }"
@@ -55,7 +57,7 @@
             <div
               class="j-layout-drawer-inner"
               :style="{
-                width: column !== 1 && (drawer.width || '300px'),
+                width: column !== 1 ? drawer.width || '300px' : '',
                 paddingTop: gap,
                 paddingBottom: gap,
               }"
@@ -71,25 +73,27 @@
             }"
             :style="{
               width:
-                column !== 1 &&
-                `calc(100% - ${drawer.width || '300px'} - ${gap} * 2)`,
+                column !== 1
+                  ? `calc(100% - ${drawer.width || '300px'} - ${gap} * 2)`
+                  : '',
             }"
           >
             <div
               class="j-layout-main flex-fill"
               :style="{
-                paddingRight: column !== 3 && gap,
-                paddingLeft: column === 1 && gap,
+                paddingRight: column !== 3 ? gap : '',
+                paddingLeft: column === 1 ? gap : '',
                 width:
-                  column === 3 &&
-                  `calc(100% - ${aside.width || '300px'} - ${gap} * 2)`,
+                  column === 3
+                    ? `calc(100% - ${aside.width || '300px'} - ${gap} * 2)`
+                    : '',
               }"
             >
               <div
                 class="j-layout-main-inner"
                 :style="{
-                  paddingTop: column !== 1 && gap,
-                  paddingBottom: column === 3 && gap,
+                  paddingTop: column !== 1 ? gap : '',
+                  paddingBottom: column === 3 ? gap : '',
                 }"
               >
                 <slot name="main"></slot>
@@ -99,16 +103,17 @@
               class="j-layout-aside"
               :style="{
                 width:
-                  column === 3 &&
-                  `calc(${aside.width || '300px'} + ${gap} * 2)`,
-                paddingLeft: column !== 2 && gap,
+                  column === 3
+                    ? `calc(${aside.width || '300px'} + ${gap} * 2)`
+                    : '',
+                paddingLeft: column !== 2 ? gap : '',
                 paddingRight: gap,
               }"
             >
               <div
                 class="j-layout-aside-inner"
                 :style="{
-                  width: column === 3 && (aside.width || '300px'),
+                  width: column === 3 ? aside.width || '300px' : '',
                   paddingTop: gap,
                   paddingBottom: gap,
                 }"
@@ -130,8 +135,8 @@
             :style="{
               backgroundColor: footer.backgroundColor || '#ffffff',
               backgroundImage: footer.backgroundImage || '',
-              borderRadius: footer.round && '4px 4px 0 0',
-              padding: footer.round && '0 4px',
+              borderRadius: footer.round ? '4px 4px 0 0' : '',
+              padding: footer.round ? '0 4px' : '',
               paddingBottom: scrollControl.size || '14px',
             }"
           >

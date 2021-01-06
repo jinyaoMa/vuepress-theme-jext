@@ -20,7 +20,4 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
-.Layout
-  margin-bottom 40px
-</style>
+<style lang="stylus" scoped></style>

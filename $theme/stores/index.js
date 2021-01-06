@@ -1,6 +1,7 @@
 import _storage from "../utils/storage";
 import lang from "./lang";
 import nightshift from "./nightshift";
+import skin from "./skin";
 
 const savedata = _storage.get() || {};
 savedata.__set__ = (key, value) => {
@@ -28,7 +29,8 @@ export default (Vuex) => {
         state: {}
       },
       lang(savedata),
-      nightshift(savedata)
+      nightshift(savedata),
+      skin(savedata)
     )
   ); // Add-in here
 };

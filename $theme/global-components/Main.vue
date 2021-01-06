@@ -38,4 +38,6 @@ export default {
 .Main
   > div > .j-container:not(:first-child)
     margin-top 40px
+  > .j-container:not(:first-child)
+    margin-top 40px
 </style>
