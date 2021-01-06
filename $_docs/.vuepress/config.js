@@ -3,7 +3,7 @@ module.exports = {
 
   theme: require.resolve("../../$theme/"),
 
-  base: "/test/",
+  base: "/",
 
   title: "耀 | jinyaoMa",
 
